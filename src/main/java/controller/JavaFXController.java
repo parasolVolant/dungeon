@@ -2,7 +2,7 @@ package controller;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
-import model.Player;
+import model.player.Player;
 
 public class JavaFXController {
     EventHandler<? super KeyEvent> eventHandler;
@@ -10,8 +10,14 @@ public class JavaFXController {
     JavaFXController(Player player){
 
      eventHandler = new EventHandler<KeyEvent>() {
-        @Override
-        public void handle(KeyEvent event) {
+
+         @Override
+
+         public void handle(KeyEvent event) {
+             player.getState().handle(event);
+         }
+
+        /*public void handle(KeyEvent event) {
             switch (event.getCode()) {
                 case UP:    player.goNorth(); break;
                 case DOWN:  player.goNorth(); break;
@@ -20,6 +26,6 @@ public class JavaFXController {
                 case I:  player.openInventory(); break;
                 case X: player.closeInventory(); break;
             }
-        }
+        }*/
     }; }
 }

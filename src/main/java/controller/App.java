@@ -1,16 +1,13 @@
 package controller;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.Player;
+import model.player.Player;
 import view.JavaFXView;
-import view.View;
 
 public class App extends Application {
     /*

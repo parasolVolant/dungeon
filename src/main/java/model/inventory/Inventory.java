@@ -11,9 +11,9 @@ public class Inventory {
     InventoryState state;
     View view;
 
-    public Inventory(View view, InventoryState initialState) {
+    public Inventory(View view) {
         this.items = new ArrayList<>();
-        this.state = initialState;
+        this.state = new ClosedInventory();
         this.view = view;
     }
 

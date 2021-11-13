@@ -1,6 +1,6 @@
 package controller;
 
-import model.Player;
+import model.player.Player;
 import view.ConsoleView;
 
 import java.util.Scanner;
@@ -17,6 +17,8 @@ public class KeyBoardController {
                 case "z":
                     player.goNorth();
                     break;
+                case "i":
+
             }
 
         }
