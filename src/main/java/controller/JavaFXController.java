@@ -17,6 +17,8 @@ public class JavaFXController {
                 case DOWN:  player.goNorth(); break;
                 case LEFT:  player.goNorth(); break;
                 case RIGHT: player.goNorth(); break;
+                case I:  player.openInventory(); break;
+                case X: player.closeInventory(); break;
             }
         }
     }; }
