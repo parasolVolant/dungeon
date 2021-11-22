@@ -1,7 +1,7 @@
 package model.player;
 
 import model.Move;
-import model.Potion;
+import model.roomElement.treasure.Potion;
 import model.inventory.ClosedInventory;
 import model.inventory.Inventory;
 import model.inventory.OpenedInventory;

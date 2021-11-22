@@ -1,6 +1,6 @@
-package model;
+package model.roomElement.treasure;
 
-public class Potion implements Treasure{
+public class Potion implements Treasure {
     @Override
     public String getName() {
         return "Potion";

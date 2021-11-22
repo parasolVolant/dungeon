@@ -10,4 +10,5 @@ public class JavaFXView implements View{
     public void handleMove(Move move){
         text.setText(move.message);
     }
+
 }
