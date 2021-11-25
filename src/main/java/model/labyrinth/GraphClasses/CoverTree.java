@@ -45,8 +45,11 @@ public class CoverTree {
         return randomTree;
     }
 
-    public boolean hasPath(Edge path) {
-        return graph.contains(path);
+    public boolean isPath(int sourceRow, int sourceCol, int destRow, int destCol) {
+        int source = grid.vertexOfCoordinate(sourceRow, sourceCol);
+        int dest = grid.vertexOfCoordinate(destRow, destCol);
+        Edge edge = new Edge(source, dest, 1);
+        return graph.contains(edge);
     }
 
     private ArrayList<Edge> genTree(Graph graph) {

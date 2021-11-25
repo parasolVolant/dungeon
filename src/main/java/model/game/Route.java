@@ -2,9 +2,6 @@ package model.game;
 
 import model.labyrinth.GraphClasses.CoverTree;
 import model.player.Player;
-import model.labyrinth.Graph.*;
-
-import java.util.List;
 
 public class Route {
 
@@ -19,8 +16,7 @@ public class Route {
     public Route(Player player) throws InterruptedException{
         this.player = player;
         visitedRooms = new boolean[WIDTH][HEIGHT];
-        CoverTree tree = new CoverTree(WIDTH, HEIGHT);
-
+        coverTree = new CoverTree(WIDTH, HEIGHT);
         initRoute();
     }
 
@@ -29,14 +25,13 @@ public class Route {
         currentRoom.emptyRoom();
     }
 
+    public boolean isPath(int row, int col) {
+        return coverTree.isPath(player.getPosX(), player.getPosY(), row, col);
+    }
+
     public void setCurrentRoom(int row,int column){
         currentRoom = new Room(row,column);
         visitedRooms[row][column] = true;
     }
-
-
-
-
-
 
 }

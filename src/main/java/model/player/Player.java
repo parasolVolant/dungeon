@@ -14,13 +14,14 @@ public class Player {
     View view ;
     Inventory inventory;
     PlayerState state;
-    Point2D position;
+    int posX, posY;
 
     public Player(View view) {
         this.view = view;
         inventory = new Inventory(view);
         state = new InAdventureState(this);
-        position = new Point2D(0,0);
+        posX = 0;
+        posY = 0;
         fakeInventory();
     }
 
@@ -28,6 +29,23 @@ public class Player {
         for (int i = 0; i < 5; i++) {
             inventory.addItem(new Potion());
         }
+
+    }
+
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
+
+    public void setPosY(int posY) {
+        this.posY = posY;
+    }
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public int getPosY() {
+        return posY;
     }
 
     public PlayerState getState() {

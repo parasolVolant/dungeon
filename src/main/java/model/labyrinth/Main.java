@@ -1,14 +1,12 @@
 package model.labyrinth;
-import model.labyrinth.Graph.*;
 import model.game.Route;
+import model.labyrinth.Graph.*;
 import model.labyrinth.GraphClasses.CoverTree;
 import model.labyrinth.GraphClasses.Grid;
 import model.player.Player;
-import view.ConsoleView;
 import view.JavaFXView;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Main {
@@ -24,22 +22,26 @@ public class Main {
         ArrayList<Edge> graph = tree.getGraph();
 
         Edge contained = graph.get(0);
-        Edge notContained = randomNotContainedEdge(graph);
+        int[] notContained = randomNotContainedEdge(graph);
 
-        System.out.println(tree.hasPath(contained));
-        System.out.println(tree.hasPath(notContained));
+        Route route = new Route(new Player(new JavaFXView()));
+        System.out.println(route.isPath(notContained[0], notContained[1]));
     }
 
-    public static Edge randomNotContainedEdge(ArrayList<Edge> graph) {
+    public static int[] randomNotContainedEdge(ArrayList<Edge> graph) {
         Random rand = new Random();
         Edge edge = null;
+        int[] coord = new int[2];
+        int source, dest;
         while(true) {
-            int source = rand.nextInt(50);
-            int dest = rand.nextInt(50);
+            source = rand.nextInt(50);
+            dest = rand.nextInt(50);
             edge = new Edge(source, dest, 1);
             if (!graph.contains(edge)) break;
         }
-        return edge;
+        coord[0] = source;
+        coord[1] = dest;
+        return coord;
     }
 
 }
