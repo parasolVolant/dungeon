@@ -1,4 +1,4 @@
-package RandomTreeAlgos;
+package model.labyrinth.RandomTreeAlgos;
 
 import Graph.Arc;
 import Graph.Graph;

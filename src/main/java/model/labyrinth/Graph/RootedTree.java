@@ -1,11 +1,10 @@
 package Graph;
 
-import RandomTreeAlgos.BreadthFirstSearch;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Queue;
+import model.labyrinth.RandomTreeAlgos.*;
 
 
 public class RootedTree {
@@ -307,7 +306,7 @@ public class RootedTree {
 		Graph graph = new Graph(order);
 		for (Edge e : edges) graph.addEdge(e);
 
-		createTree(root, BreadthFirstSearch.generateTree(graph, root));
+		createTree(root, RandomTreeAlgos.BreadthFirstSearch.generateTree(graph, root));
 		
 		rerootTree();
 		computeAllHeights();
