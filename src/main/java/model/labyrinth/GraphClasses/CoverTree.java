@@ -57,12 +57,11 @@ public class CoverTree {
     }
 
     private ArrayList<Edge> genTree(Graph graph) {
-        ArrayList<Edge> randomTree;
+        ArrayList<Edge> randomTree =  new ArrayList<>();;
 
         // Non-random BFS
         ArrayList<Arc> randomArcTree = AldousBroderAlgorithm.generateTree(graph, 0);
 
-        randomTree = new ArrayList<>();
         for (Arc a : randomArcTree) randomTree.add(a.support);
         return randomTree;
     }

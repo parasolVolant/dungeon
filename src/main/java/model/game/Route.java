@@ -16,7 +16,7 @@ public class Route {
     Player player;
     Room currentRoom;
 
-    public Route(Player player) throws InterruptedException{
+    public Route(Player player) {
         this.player = player;
         visitedRooms = new boolean[WIDTH][HEIGHT];
         coverTree = new CoverTree(WIDTH, HEIGHT);
@@ -38,9 +38,16 @@ public class Route {
 
     public boolean isPath(Edge edge) { return coverTree.isPath(edge);}
 
+    public boolean isVisited(int row, int col) {
+        return visitedRooms[row][col];
+    }
+
     public void setCurrentRoom(int row,int column){
         currentRoom = new Room(row,column);
         visitedRooms[row][column] = true;
     }
 
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
 }

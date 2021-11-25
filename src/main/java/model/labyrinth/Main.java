@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         /*
         Edge edge = new Edge(0,1,1);
         Edge edge2 = new Edge(1, 2, 1);
@@ -26,12 +26,13 @@ public class Main {
 
 
         Route route = new Route(new Player(new JavaFXView()));
+        Player player = new Player(new JavaFXView(), route);
         Edge contained = route.getGraph().get(0);
-
+/*
         List<Edge> graph = route.getGraph();
         int[] notContained = randomNotContainedEdge(graph);
         System.out.println(route.isPath(contained));
-        System.out.println(route.isPath(notContained[0], notContained[1]));
+        System.out.println(route.isPath(notContained[0], notContained[1]));*/
     }
 
     public static int[] randomNotContainedEdge(List<Edge> graph) {

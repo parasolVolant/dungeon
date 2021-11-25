@@ -2,6 +2,7 @@ package model.player;
 
 import javafx.geometry.Point2D;
 import model.Move;
+import model.game.Route;
 import model.roomElement.treasure.Potion;
 import model.inventory.ClosedInventory;
 import model.inventory.Inventory;
@@ -15,6 +16,7 @@ public class Player {
     Inventory inventory;
     PlayerState state;
     int posX, posY;
+    Route route;
 
     public Player(View view) {
         this.view = view;
@@ -22,7 +24,21 @@ public class Player {
         state = new InAdventureState(this);
         posX = 0;
         posY = 0;
+        route = new Route(this);
         fakeInventory();
+    }
+
+    public Player(View view, Route route) {
+        this.view = view;
+        inventory = new Inventory(view);
+        state = new InAdventureState(this);
+        posX = 0;
+        posY = 0;
+        this.route = route;
+    }
+
+    public Route getRoute() {
+        return this.route;
     }
 
     private void fakeInventory() {
@@ -52,13 +68,52 @@ public class Player {
         return state;
     }
 
-    public void goNorth() {
-        view.handleMove(new Move("You face a wall"));
-    }
-
     public void changeState(PlayerState newState) {
         state = newState;
     }
+
+
+    public void goNorth() {
+        System.out.println(route.isPath(posX, posY-1));
+        if(route.isPath(posX, posY-1)) {
+            view.handleMove(new Move("You go North."));
+            posY--;
+        } else {
+            view.handleMove(new Move("You face a wall"));
+        }
+    }
+
+    public void goSouth() {
+        int roomY = posY+1;
+        System.out.println(route.isPath(posX, roomY));
+        if(route.isPath(posX, roomY)) {
+            view.handleMove(new Move("You go South."));
+            posY++;
+            System.out.println("ton papa");
+        } else {
+            System.out.println("ta maman");
+            view.handleMove(new Move("You face a wall"));
+        }
+    }
+
+    public void goWest() {
+        if(route.isPath(posX-1, posY)) {
+            view.handleMove(new Move("You go West."));
+            posX--;
+        } else {
+            view.handleMove(new Move("You face a wall"));
+        }
+    }
+
+    public void goEast() {
+        if(route.isPath(posX+1, posY)) {
+            view.handleMove(new Move("You go East."));
+            posX++;
+        } else {
+            view.handleMove(new Move("You face a wall"));
+        }
+    }
+
 
     public void openInventory() {
         this.changeState(new InInventoryState(this));
