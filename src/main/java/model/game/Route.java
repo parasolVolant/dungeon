@@ -11,7 +11,7 @@ public class Route {
     private static final int WIDTH = 50;
     private static final int HEIGHT = 50;
 
-    List<Edge> coverTree;
+    CoverTree coverTree;
     boolean[][] visitedRooms;
     Player player;
     Room currentRoom;
