@@ -35,7 +35,7 @@ public class CoverTree {
         return grid;
     }
 
-    public ArrayList<Edge> graph() throws InterruptedException {
+    private ArrayList<Edge> graph() throws InterruptedException {
         Graph graph = grid.graph;
 
         ArrayList<Edge> randomTree = genTree(graph);
@@ -49,6 +49,10 @@ public class CoverTree {
         int source = grid.vertexOfCoordinate(sourceRow, sourceCol);
         int dest = grid.vertexOfCoordinate(destRow, destCol);
         Edge edge = new Edge(source, dest, 1);
+        return graph.contains(edge);
+    }
+
+    public boolean isPath(Edge edge) {
         return graph.contains(edge);
     }
 

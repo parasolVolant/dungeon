@@ -7,11 +7,13 @@ import model.player.Player;
 import view.JavaFXView;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
+        /*
         Edge edge = new Edge(0,1,1);
         Edge edge2 = new Edge(1, 2, 1);
         Arc arc1 = new Arc(edge, false);
@@ -19,16 +21,20 @@ public class Main {
 
         CoverTree tree = new CoverTree(50, 50);
         Grid grid = tree.getGrid();
-        ArrayList<Edge> graph = tree.getGraph();
+        List<Edge> graph = tree.getGraph();
+        */
 
-        Edge contained = graph.get(0);
-        int[] notContained = randomNotContainedEdge(graph);
 
         Route route = new Route(new Player(new JavaFXView()));
+        Edge contained = route.getGraph().get(0);
+
+        List<Edge> graph = route.getGraph();
+        int[] notContained = randomNotContainedEdge(graph);
+        System.out.println(route.isPath(contained));
         System.out.println(route.isPath(notContained[0], notContained[1]));
     }
 
-    public static int[] randomNotContainedEdge(ArrayList<Edge> graph) {
+    public static int[] randomNotContainedEdge(List<Edge> graph) {
         Random rand = new Random();
         Edge edge = null;
         int[] coord = new int[2];

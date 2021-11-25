@@ -1,7 +1,10 @@
 package model.game;
 
+import model.labyrinth.Graph.Edge;
 import model.labyrinth.GraphClasses.CoverTree;
 import model.player.Player;
+
+import java.util.List;
 
 public class Route {
 
@@ -25,9 +28,15 @@ public class Route {
         currentRoom.emptyRoom();
     }
 
+    public List<Edge> getGraph() {
+        return coverTree.getGraph();
+    }
+
     public boolean isPath(int row, int col) {
         return coverTree.isPath(player.getPosX(), player.getPosY(), row, col);
     }
+
+    public boolean isPath(Edge edge) { return coverTree.isPath(edge);}
 
     public void setCurrentRoom(int row,int column){
         currentRoom = new Room(row,column);
