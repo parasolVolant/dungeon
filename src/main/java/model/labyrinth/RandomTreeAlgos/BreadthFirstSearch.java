@@ -1,7 +1,7 @@
 package RandomTreeAlgos;
 
-import Graph.Arc;
-import Graph.Graph;
+import model.labyrinth.Graph.Arc;
+import model.labyrinth.Graph.Graph;
 
 import java.util.*;
 

@@ -1,5 +1,5 @@
-package GraphClasses;
-import Graph.*;
+package model.labyrinth.GraphClasses;
+import model.labyrinth.Graph.*;
 
 import java.util.BitSet;
 
@@ -20,7 +20,7 @@ public class Grid {
 		return vertex / width;
 	}
 	
-	private int vertexOfCoordinate(int abscissa, int ordinate) {
+	public int vertexOfCoordinate(int abscissa, int ordinate) {
 		return ordinate * width + abscissa;
 	}
 	

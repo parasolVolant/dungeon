@@ -14,9 +14,7 @@ public class Room {
     List<RoomElement> elements = new ArrayList<>();
 
     /*
-    0 -> hasTreasure
-    1-> hasMonster
-    2-> hasTrap
+    0 -> hasTreasure | 1-> hasMonster | 2-> hasTrap
      */
 
     boolean[] hasElements = new boolean[3];
@@ -24,17 +22,28 @@ public class Room {
     public Room(int row, int column){
         this.row = row;
         this.column = column;
+        initElements();
+        initRoom();
+    }
+
+    private void initElements() {
         Random random = new Random();
         for (int i = 0; i <3 ; i++) {
             hasElements[i] = true;
         }
-        initRoom();
+        //TODO
+        //remplir la liste des éléments de la salle
     }
 
     private void initRoom(){
         if(hasTreasure()) generateElement(new TreasureGenerator());
         if (hasMonster()) generateElement(new MonsterGenerator());
         if (hasTrap()) generateElement(new TrapGenerator());
+    }
+
+
+    public void emptyRoom() {
+        hasElements = new boolean[3];
     }
 
     public boolean hasTreasure(){

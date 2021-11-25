@@ -1,6 +1,5 @@
-package GraphClasses;
-import Graph.*;
-
+package model.labyrinth.GraphClasses;
+import model.labyrinth.Graph.*;
 
 import java.awt.Color;
 import java.awt.Dimension;

@@ -1,8 +1,7 @@
-package model.game;
+package model.labyrinth.GraphClasses;
 
-import Graph.*;
-import GraphClasses.*;
-import GraphClasses.Grid;
+import model.labyrinth.Graph.*;
+import model.labyrinth.GraphClasses.*;
 import model.labyrinth.RandomTreeAlgos.AldousBroderAlgorithm;
 
 
@@ -13,20 +12,30 @@ import java.util.Random;
 import javax.swing.JFrame;
 
 
-public class Board {
+public class CoverTree {
 
     @SuppressWarnings("unused")
     private final static Random gen = new Random();
 
     Grid grid;
+    ArrayList<Edge> graph = new ArrayList<Edge>();
 
-    public Board(int width, int height) {
+    public CoverTree(int width, int height) {
         grid = new Grid(width, height);
+        try {
+            graph = graph();
+        } catch (InterruptedException e) { }
+    }
+
+    public ArrayList<Edge> getGraph() {
+        return graph;
+    }
+
+    public Grid getGrid() {
+        return grid;
     }
 
     public ArrayList<Edge> graph() throws InterruptedException {
-
-        //grid = new Grid(1920 / 11, 1080 / 11);
         Graph graph = grid.graph;
 
         ArrayList<Edge> randomTree = genTree(graph);
@@ -36,7 +45,14 @@ public class Board {
         return randomTree;
     }
 
-    public static ArrayList<Edge> genTree(Graph graph) {
+    public boolean hasPath(int sourceRow, int sourceCol, int destRow, int destCol) {
+        int sourceVertex = grid.vertexOfCoordinate(sourceRow, sourceCol);
+        int destVertex = grid.vertexOfCoordinate(destRow, destCol);
+        Edge path = new Edge(sourceVertex, destVertex, 1);
+        return graph.contains(path);
+    }
+
+    private ArrayList<Edge> genTree(Graph graph) {
         ArrayList<Edge> randomTree;
 
         // Non-random BFS
@@ -47,7 +63,7 @@ public class Board {
         return randomTree;
     }
 
-    private static void showGrid(
+    public void showGrid(
             Grid grid,
             ArrayList<Edge> randomTree
     ) throws InterruptedException {

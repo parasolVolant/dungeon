@@ -1,5 +1,6 @@
 package model.player;
 
+import javafx.geometry.Point2D;
 import model.Move;
 import model.roomElement.treasure.Potion;
 import model.inventory.ClosedInventory;
@@ -7,15 +8,19 @@ import model.inventory.Inventory;
 import model.inventory.OpenedInventory;
 import view.View;
 
+import javax.swing.text.Position;
+
 public class Player {
     View view ;
     Inventory inventory;
     PlayerState state;
+    Point2D position;
 
     public Player(View view) {
         this.view = view;
         inventory = new Inventory(view);
         state = new InAdventureState(this);
+        position = new Point2D(0,0);
         fakeInventory();
     }
 

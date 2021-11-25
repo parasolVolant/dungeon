@@ -1,4 +1,4 @@
-package Graph;
+package model.labyrinth.Graph;
 
 import java.util.ArrayList;
 import java.util.Collections;
