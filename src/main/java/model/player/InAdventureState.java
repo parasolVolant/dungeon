@@ -14,9 +14,9 @@ public class InAdventureState implements PlayerState{
     public void handle(KeyEvent event) {
         switch (event.getCode()) {
             case UP:    player.goNorth(); break;
-            case DOWN:  player.goNorth(); break;
-            case LEFT:  player.goNorth(); break;
-            case RIGHT: player.goNorth(); break;
+            case DOWN:  player.goSouth(); break;
+            case LEFT:  player.goWest(); break;
+            case RIGHT: player.goEast(); break;
             case I:  player.openInventory(); break;
     }
     }

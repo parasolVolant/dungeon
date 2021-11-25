@@ -21,6 +21,10 @@ public class Inventory {
         state = newState;
     }
 
+    public Treasure getItem(int index) {
+        return items.get(index);
+    }
+
     public void addItem(Treasure item){
         items.add(item);
     }
