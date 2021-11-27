@@ -19,12 +19,16 @@ public class Inventory {
         this.view = view;
     }
 
+    public boolean isFull() {
+        return items.size() >= maxSize;
+    }
+
     public void changeState(InventoryState newState) {
         state = newState;
     }
 
     public void addItem(Treasure item){
-        if(items.size() >= maxSize) return;
+        if(isFull()) return;
         items.add(item);
     }
 

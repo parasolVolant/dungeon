@@ -105,6 +105,9 @@ public class Player {
         }
     }
 
+    public boolean isFull() {
+        return inventory.isFull();
+    }
 
     public void openInventory() {
         this.changeState(new InInventoryState(this));
@@ -123,7 +126,7 @@ public class Player {
     public void useItem(int index) {
         Treasure item = inventory.removeItem(index);
         try {
-            System.out.println(item.getName());
+            item.equip(this);
         } catch (NullPointerException ignored) {}
         inventory.show();
     }

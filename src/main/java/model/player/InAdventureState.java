@@ -1,6 +1,8 @@
 package model.player;
 
 import javafx.scene.input.KeyEvent;
+import model.room.FirstRoom;
+import model.room.TreasureRoom;
 
 public class InAdventureState implements PlayerState{
 
@@ -17,6 +19,7 @@ public class InAdventureState implements PlayerState{
             case DOWN:  player.goSouth(); break;
             case LEFT:  player.goWest(); break;
             case RIGHT: player.goEast(); break;
+            case ENTER: new TreasureRoom().event(player); break;
             case I:  player.openInventory(); break;
     }
     }
