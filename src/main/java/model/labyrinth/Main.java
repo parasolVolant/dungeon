@@ -21,15 +21,15 @@ public class Main {
         List<Edge> graph = tree.getGraph();
         */
 
+        Player player = new Player(new JavaFXView());
+        Route route = player.getRoute();
 
-        Route route = new Route(new Player(new JavaFXView()));
-        Player player = new Player(new JavaFXView(), route);
-        Edge contained = route.getGraph().get(0);
-/*
+        Edge contained = route.getGraph().get(50);
+
         List<Edge> graph = route.getGraph();
         int[] notContained = randomNotContainedEdge(graph);
         System.out.println(route.isPath(contained));
-        System.out.println(route.isPath(notContained[0], notContained[1]));*/
+        System.out.println(route.isPath(notContained[0], notContained[1]));
     }
 
     public static int[] randomNotContainedEdge(List<Edge> graph) {

@@ -25,15 +25,6 @@ public class Player {
         fakeInventory();
     }
 
-    public Player(View view, Route route) {
-        this.view = view;
-        inventory = new Inventory(view);
-        state = new InAdventureState(this);
-        posX = 0;
-        posY = 0;
-        this.route = route;
-    }
-
     public Route getRoute() {
         return this.route;
     }
@@ -61,6 +52,14 @@ public class Player {
         return posY;
     }
 
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public View getView() {
+        return view;
+    }
+
     public PlayerState getState() {
         return state;
     }
@@ -71,25 +70,20 @@ public class Player {
 
 
     public void goNorth() {
-        System.out.println(route.isPath(posX, posY-1));
         if(route.isPath(posX, posY-1)) {
             view.handleMove(new Move("You go North."));
             posY--;
         } else {
-            view.handleMove(new Move("You face a wall"));
+            view.handleMove(new Move("You go North but you face a wall."));
         }
     }
 
     public void goSouth() {
-        int roomY = posY+1;
-        System.out.println(route.isPath(posX, roomY));
-        if(route.isPath(posX, roomY)) {
+        if(route.isPath(posX, posY+1)) {
             view.handleMove(new Move("You go South."));
             posY++;
-            System.out.println("ton papa");
         } else {
-            System.out.println("ta maman");
-            view.handleMove(new Move("You face a wall"));
+            view.handleMove(new Move("You go South but you face a wall."));
         }
     }
 
@@ -98,7 +92,7 @@ public class Player {
             view.handleMove(new Move("You go West."));
             posX--;
         } else {
-            view.handleMove(new Move("You face a wall"));
+            view.handleMove(new Move("You go West but you face a wall."));
         }
     }
 
@@ -107,7 +101,7 @@ public class Player {
             view.handleMove(new Move("You go East."));
             posX++;
         } else {
-            view.handleMove(new Move("You face a wall"));
+            view.handleMove(new Move("You go East but you face a wall."));
         }
     }
 
