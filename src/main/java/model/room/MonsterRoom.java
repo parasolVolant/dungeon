@@ -9,6 +9,6 @@ public class MonsterRoom implements Room{
 
     @Override
     public void event(Player player) {
-
+        //TODO
     }
 }
