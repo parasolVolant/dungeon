@@ -1,11 +1,10 @@
 package model.roomElement.trap;
 
 import model.player.Player;
-import model.roomElement.trap.Trap;
 
-public class Net implements Trap {
+public class Pit implements Trap{
 
-    int damage = 1;
+    int damage = 2;
 
     @Override
     public void hurt(Player player) {
@@ -14,6 +13,6 @@ public class Net implements Trap {
 
     @Override
     public String description() {
-        return "You were caught in a Net! \nYou lose " + damage + " hp.";
+        return "You fell into a Hidden Pit! \nYou lose " + damage + " hp while climbing back up.";
     }
 }
