@@ -1,15 +1,12 @@
 package model.player;
 
-import javafx.geometry.Point2D;
 import model.Move;
-import model.game.Route;
 import model.roomElement.treasure.Potion;
 import model.inventory.ClosedInventory;
 import model.inventory.Inventory;
 import model.inventory.OpenedInventory;
+import model.roomElement.treasure.Treasure;
 import view.View;
-
-import javax.swing.text.Position;
 
 public class Player {
     View view ;
@@ -128,4 +125,13 @@ public class Player {
         inventory.show();
         //view.handleMove(new Move(inventory.show()));
     }
+
+    public void useItem(int index) {
+        Treasure item = inventory.removeItem(index);
+        try {
+            System.out.println(item.getName());
+        } catch (NullPointerException ignored) {}
+        inventory.show();
+    }
+
 }

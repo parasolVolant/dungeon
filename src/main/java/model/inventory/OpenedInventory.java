@@ -14,7 +14,10 @@ public class OpenedInventory implements InventoryState {
 
     private String asString(Inventory inventory) {
         List<Treasure> items = inventory.items;
-        StringBuilder sb = new StringBuilder("Inventory \n");
+        int size = inventory.items.size();
+        int maxSize = inventory.maxSize;
+
+        StringBuilder sb = new StringBuilder("Inventory " + size +"/"+maxSize+" :  \n");
         for (int i = 0; i < items.size(); i++) {
             sb.append("\t" + i + " - " + items.get(i).getName() + "\n");
         }

@@ -1,5 +1,6 @@
-package model.game;
+package model.player;
 
+import model.room.Room;
 import model.labyrinth.Graph.Edge;
 import model.labyrinth.GraphClasses.CoverTree;
 import model.player.Player;
@@ -25,7 +26,7 @@ public class Route {
 
     private void initRoute() {
         setCurrentRoom(0,0);
-        currentRoom.emptyRoom();
+        //currentRoom.emptyRoom();
     }
 
     public List<Edge> getGraph() {
@@ -43,7 +44,7 @@ public class Route {
     }
 
     public void setCurrentRoom(int row,int column){
-        currentRoom = new Room(row,column);
+        //currentRoom = new Room(row,column);
         visitedRooms[row][column] = true;
     }
 

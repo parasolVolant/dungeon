@@ -1,12 +1,9 @@
 package model.labyrinth;
-import model.game.Route;
+import model.player.Route;
 import model.labyrinth.Graph.*;
-import model.labyrinth.GraphClasses.CoverTree;
-import model.labyrinth.GraphClasses.Grid;
 import model.player.Player;
 import view.JavaFXView;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
