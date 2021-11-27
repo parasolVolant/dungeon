@@ -26,8 +26,13 @@ public class Main {
 
         Edge contained = route.getGraph().get(50);
 
+
+
         List<Edge> graph = route.getGraph();
         int[] notContained = randomNotContainedEdge(graph);
+        System.out.println(route.isPath(0, 1));
+        System.out.println(route.isPath(1, 0));
+        System.out.println(route.isPath(1, 1));
         System.out.println(route.isPath(contained));
         System.out.println(route.isPath(notContained[0], notContained[1]));
     }

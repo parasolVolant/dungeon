@@ -19,7 +19,11 @@ public class OpenedInventory implements InventoryState {
 
         StringBuilder sb = new StringBuilder("Inventory " + size +"/"+maxSize+" :  \n");
         for (int i = 0; i < items.size(); i++) {
-            sb.append("\t" + i + " - " + items.get(i).getName() + "\n");
+            sb.append("\t")
+                    .append(i)
+                    .append(" - ")
+                    .append(items.get(i).toString())
+                    .append("\n");
         }
         return sb.toString();
     }
