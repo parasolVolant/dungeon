@@ -5,20 +5,21 @@ import model.player.Player;
 import model.roomElement.treasure.Potion;
 import model.roomElement.treasure.Stick;
 import model.roomElement.treasure.Treasure;
+import model.roomElement.treasure.TreasureGenerator;
 
 public class TreasureRoom implements Room{
 
-    Treasure item = new Stick();
+    Treasure item = new TreasureGenerator().createTreasure();
 
     @Override
     public void event(Player player) {
-        String message = "You found a "+item.getName()+". \n";
+        StringBuilder message = new StringBuilder("You found a "+item.toString()+". \n");
         if(player.isFull()) {
-            message+= "Unfortunately, your inventory is full.";
+            message.append("Unfortunately, your inventory is full.");
         } else {
-            message+= "You put it in your inventory.";
+            message.append("You put it in your inventory.");
             player.getInventory().addItem(item);
         }
-        player.getView().handleMove(new Move(message));
+        player.getView().handleMove(new Move(message.toString()));
     }
 }
