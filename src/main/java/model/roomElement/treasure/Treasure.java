@@ -1,9 +1,8 @@
 package model.roomElement.treasure;
 
 import model.player.Player;
-import model.roomElement.RoomElement;
 
-public interface Treasure extends RoomElement {
+public interface Treasure {
 
     void equip(Player player);
 

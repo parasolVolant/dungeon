@@ -1,6 +1,7 @@
 package model.roomElement.monster;
 
-import model.roomElement.RoomElement;
+public interface Monster {
 
-public interface Monster extends RoomElement {
+    String getName();
+
 }

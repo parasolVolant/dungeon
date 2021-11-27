@@ -1,7 +1,10 @@
 package model.roomElement.trap;
 
-import model.roomElement.RoomElement;
+import model.player.Player;
 
-public interface Trap extends RoomElement {
+public interface Trap {
+
+    void hurt(Player player);
+    String description();
 
 }
