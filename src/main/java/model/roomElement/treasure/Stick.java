@@ -5,12 +5,13 @@ import model.player.Player;
 public class Stick implements Treasure{
 
     @Override
-    public String getName() {
+    public String toString() {
         return "Wooden Stick";
     }
 
     @Override
     public void equip(Player player) {
         //TODO
+
     }
 }
