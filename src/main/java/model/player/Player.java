@@ -2,7 +2,9 @@ package model.player;
 
 import javafx.geometry.Point2D;
 import model.Move;
+import model.combat.CombatSystem;
 import model.game.Route;
+import model.roomElement.monster.Monster;
 import model.roomElement.treasure.Potion;
 import model.inventory.ClosedInventory;
 import model.inventory.Inventory;
@@ -17,6 +19,11 @@ public class Player {
     PlayerState state;
     int posX, posY;
     Route route;
+    private int life;
+    private int strength;
+    public final int MAX_LIFE = 15;
+    CombatSystem combatSystem;
+
 
     public Player(View view) {
         this.view = view;
@@ -37,9 +44,39 @@ public class Player {
         this.route = route;
     }
 
+    public Player(CombatSystem combatSystem){
+        this.combatSystem = combatSystem;
+        this.life = MAX_LIFE;
+        this.strength = 5;
+    }
+
+    public int getLife() {
+        return life;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setLife(int lifeValue) {
+        this.life = lifeValue;
+    }
+
+    public void setStrength(int strengthValue) {
+        this.strength = strengthValue;
+    }
+
     public Route getRoute() {
         return this.route;
     }
+
+    public void hit(Monster monster){
+        monster.setLife(monster.getLife()-this.getStrength());
+    }
+
+
+    public boolean isDead() { return life <= 0; }
+
 
     private void fakeInventory() {
         for (int i = 0; i < 5; i++) {

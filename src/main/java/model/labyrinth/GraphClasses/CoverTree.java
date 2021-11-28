@@ -48,7 +48,7 @@ public class CoverTree {
     public boolean isPath(int sourceRow, int sourceCol, int destRow, int destCol) {
         int source = grid.vertexOfCoordinate(sourceRow, sourceCol);
         int dest = grid.vertexOfCoordinate(destRow, destCol);
-        Edge edge = new Edge(source, dest, 1);
+        Edge edge = new Edge(source, dest, 0.0);
         return graph.contains(edge);
     }
 
