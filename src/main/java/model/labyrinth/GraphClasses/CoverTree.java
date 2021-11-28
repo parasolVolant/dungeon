@@ -24,7 +24,9 @@ public class CoverTree {
         grid = new Grid(width, height);
         try {
             graph = graph();
-        } catch (InterruptedException e) { }
+        } catch (InterruptedException e) {
+        }
+        grid.drawSubgrid(graph);
     }
 
     public ArrayList<Edge> getGraph() {
@@ -46,10 +48,19 @@ public class CoverTree {
     }
 
     public boolean isPath(int sourceRow, int sourceCol, int destRow, int destCol) {
-        int source = grid.vertexOfCoordinate(sourceRow, sourceCol);
-        int dest = grid.vertexOfCoordinate(destRow, destCol);
-        Edge edge = new Edge(source, dest, 1);
-        return graph.contains(edge);
+        Edge edge = new Edge(
+                grid.vertexOfCoordinate(sourceRow, sourceCol),
+                grid.vertexOfCoordinate(destRow, destCol),
+                0.0
+        );
+
+        Edge inversedEdge = new Edge(
+                grid.vertexOfCoordinate(destRow, destCol),
+                grid.vertexOfCoordinate(sourceRow, sourceCol),
+                0.0
+        );
+
+        return graph.contains(edge) || graph.contains(inversedEdge);
     }
 
     public boolean isPath(Edge edge) {

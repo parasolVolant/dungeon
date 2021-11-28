@@ -32,9 +32,9 @@ public class Main {
         int[] notContained = randomNotContainedEdge(graph);
         System.out.println(route.isPath(0, 1));
         System.out.println(route.isPath(1, 0));
-        System.out.println(route.isPath(1, 1));
         System.out.println(route.isPath(contained));
-        System.out.println(route.isPath(notContained[0], notContained[1]));
+
+        //System.out.println(route.isPath(notContained[0], notContained[1]));
     }
 
     public static int[] randomNotContainedEdge(List<Edge> graph) {

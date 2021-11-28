@@ -9,8 +9,8 @@ import java.util.List;
 
 public class Route {
 
-    private static final int WIDTH = 50;
-    private static final int HEIGHT = 50;
+    private static final int WIDTH = 10;
+    private static final int HEIGHT = 10;
 
     CoverTree coverTree;
     boolean[][] visitedRooms;

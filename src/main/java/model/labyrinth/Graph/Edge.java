@@ -1,5 +1,7 @@
 package model.labyrinth.Graph;
 
+import java.util.Objects;
+
 public class Edge implements Comparable<Edge> {
 
 	public int source;
@@ -32,5 +34,18 @@ public class Edge implements Comparable<Edge> {
 
 	public void setWeight(double weight) {
 		this.weight = weight;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Edge edge = (Edge) o;
+		return source == edge.source && dest == edge.dest && Double.compare(edge.weight, weight) == 0;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(source, dest, weight);
 	}
 }
