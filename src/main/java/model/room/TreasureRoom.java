@@ -2,10 +2,8 @@ package model.room;
 
 import model.Move;
 import model.player.Player;
-import model.roomElement.treasure.Potion;
-import model.roomElement.treasure.Stick;
-import model.roomElement.treasure.Treasure;
-import model.roomElement.treasure.TreasureGenerator;
+import model.room_element.treasure.Treasure;
+import model.room_element.treasure.TreasureGenerator;
 
 public class TreasureRoom implements Room{
 

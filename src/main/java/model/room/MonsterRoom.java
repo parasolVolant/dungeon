@@ -2,8 +2,8 @@ package model.room;
 
 import model.Move;
 import model.player.Player;
-import model.roomElement.monster.Monster;
-import model.roomElement.monster.MonsterGenerator;
+import model.room_element.monster.Monster;
+import model.room_element.monster.MonsterGenerator;
 
 public class MonsterRoom implements Room{
 
