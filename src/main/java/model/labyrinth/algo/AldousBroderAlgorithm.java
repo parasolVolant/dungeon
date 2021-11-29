@@ -1,6 +1,6 @@
-package model.labyrinth.RandomTreeAlgos;
+package model.labyrinth.algo;
 
-import model.labyrinth.Graph.*;
+import model.labyrinth.graph.*;
 
 import java.util.ArrayList;
 import java.util.BitSet;

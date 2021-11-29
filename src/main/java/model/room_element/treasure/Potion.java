@@ -1,17 +1,16 @@
-package model.roomElement.treasure;
+package model.room_element.treasure;
 
 import model.player.Player;
 
-public class Stick implements Treasure{
+public class Potion implements Treasure {
 
     @Override
     public String toString() {
-        return "Wooden Stick";
+        return "Potion";
     }
 
     @Override
     public void equip(Player player) {
         //TODO
-
     }
 }

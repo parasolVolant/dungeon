@@ -1,4 +1,4 @@
-package model.roomElement.monster;
+package model.room_element.monster;
 
 public interface Monster {
 

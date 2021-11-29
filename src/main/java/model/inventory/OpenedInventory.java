@@ -1,7 +1,7 @@
 package model.inventory;
 
 import model.Move;
-import model.roomElement.treasure.Treasure;
+import model.room_element.treasure.Treasure;
 
 import java.util.List;
 

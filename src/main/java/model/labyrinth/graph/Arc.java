@@ -1,4 +1,4 @@
-package model.labyrinth.Graph;
+package model.labyrinth.graph;
 
 public class Arc {
 	public Edge support;

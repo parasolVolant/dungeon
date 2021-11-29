@@ -1,15 +1,11 @@
-package model.labyrinth.GraphClasses;
+package model.labyrinth.graph_classes;
 
-import model.labyrinth.Graph.*;
-import model.labyrinth.GraphClasses.*;
-import model.labyrinth.RandomTreeAlgos.AldousBroderAlgorithm;
+import model.labyrinth.graph.*;
+import model.labyrinth.algo.AldousBroderAlgorithm;
 
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
-
-import javax.swing.JFrame;
 
 
 public class CoverTree {
@@ -42,25 +38,29 @@ public class CoverTree {
 
         ArrayList<Edge> randomTree = genTree(graph);
 
-        showGrid(grid, randomTree);
+        //showGrid(grid, randomTree);
 
         return randomTree;
     }
 
     public boolean isPath(int sourceRow, int sourceCol, int destRow, int destCol) {
+
+        int vertexOfSource = grid.vertexOfCoordinate(sourceRow, sourceCol);
+        int vertexOfDest = grid.vertexOfCoordinate(destRow, destCol);
+
         Edge edge = new Edge(
-                grid.vertexOfCoordinate(sourceRow, sourceCol),
-                grid.vertexOfCoordinate(destRow, destCol),
+                vertexOfSource,
+                vertexOfDest,
                 0.0
         );
 
-        Edge inversedEdge = new Edge(
-                grid.vertexOfCoordinate(destRow, destCol),
-                grid.vertexOfCoordinate(sourceRow, sourceCol),
+        Edge inverseEdge = new Edge(
+                vertexOfDest,
+                vertexOfSource,
                 0.0
         );
 
-        return graph.contains(edge) || graph.contains(inversedEdge);
+        return graph.contains(edge) || graph.contains(inverseEdge);
     }
 
     public boolean isPath(Edge edge) {
@@ -76,7 +76,7 @@ public class CoverTree {
         for (Arc a : randomArcTree) randomTree.add(a.support);
         return randomTree;
     }
-
+/*
     public void showGrid(
             Grid grid,
             ArrayList<Edge> randomTree
@@ -112,7 +112,7 @@ public class CoverTree {
             e1.printStackTrace();
         }
 
-    }
+    }*/
 
 }
 

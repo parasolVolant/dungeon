@@ -1,15 +1,11 @@
-package model.roomElement.monster;
-
-import model.roomElement.trap.Net;
-import model.roomElement.trap.Pit;
-import model.roomElement.trap.Trap;
+package model.room_element.monster;
 
 import java.util.Random;
 
 public class MonsterGenerator {
 
 
-    static final int NUMBER_OF_MONSTER = 2;  //augmenter avec le nombre de trap
+    static final int NUMBER_OF_MONSTER = 2;  //augmenter avec le nombre de monstre
 
     public Monster createMonster() {
         Random random = new Random();

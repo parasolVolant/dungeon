@@ -1,6 +1,6 @@
 package model.inventory;
 
-import model.roomElement.treasure.Treasure;
+import model.room_element.treasure.Treasure;
 import view.View;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package model.roomElement.trap;
+package model.room_element.trap;
 
 import java.util.Random;
 

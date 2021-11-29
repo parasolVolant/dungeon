@@ -1,7 +1,6 @@
-package model.roomElement.trap;
+package model.room_element.trap;
 
 import model.player.Player;
-import model.roomElement.trap.Trap;
 
 public class Net implements Trap {
 

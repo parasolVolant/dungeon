@@ -1,6 +1,4 @@
-package model.roomElement.monster;
-
-import model.roomElement.monster.Monster;
+package model.room_element.monster;
 
 public class Orc implements Monster {
 

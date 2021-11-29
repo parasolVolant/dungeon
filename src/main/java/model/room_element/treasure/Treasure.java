@@ -1,4 +1,4 @@
-package model.roomElement.treasure;
+package model.room_element.treasure;
 
 import model.player.Player;
 

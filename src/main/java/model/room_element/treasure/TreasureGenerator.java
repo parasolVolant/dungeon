@@ -1,8 +1,4 @@
-package model.roomElement.treasure;
-
-import model.roomElement.trap.Net;
-import model.roomElement.trap.Pit;
-import model.roomElement.trap.Trap;
+package model.room_element.treasure;
 
 import java.util.Random;
 

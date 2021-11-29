@@ -1,4 +1,4 @@
-package model.labyrinth.Graph;
+package model.labyrinth.graph;
 
 import java.util.Objects;
 

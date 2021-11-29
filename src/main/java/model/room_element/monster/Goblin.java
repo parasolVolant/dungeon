@@ -1,4 +1,4 @@
-package model.roomElement.monster;
+package model.room_element.monster;
 
 public class Goblin implements Monster{
 
