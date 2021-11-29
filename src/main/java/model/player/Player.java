@@ -1,11 +1,11 @@
 package model.player;
 
 import model.Move;
-import model.roomElement.treasure.Potion;
+import model.room_element.treasure.Potion;
 import model.inventory.ClosedInventory;
 import model.inventory.Inventory;
 import model.inventory.OpenedInventory;
-import model.roomElement.treasure.Treasure;
+import model.room_element.treasure.Treasure;
 import view.View;
 
 public class Player {
@@ -22,7 +22,7 @@ public class Player {
         posX = 0;
         posY = 0;
         route = new Route(this);
-        fakeInventory();
+        //fakeInventory();
     }
 
     public Route getRoute() {
@@ -71,8 +71,8 @@ public class Player {
 
     public void goNorth() {
         if(route.isPath(posX, posY-1)) {
-            view.handleMove(new Move("You go North."));
             posY--;
+            route.update(posX, posY);
         } else {
             view.handleMove(new Move("You go North but you face a wall."));
         }
@@ -80,8 +80,8 @@ public class Player {
 
     public void goSouth() {
         if(route.isPath(posX, posY+1)) {
-            view.handleMove(new Move("You go South."));
             posY++;
+            route.update(posX, posY);
         } else {
             view.handleMove(new Move("You go South but you face a wall."));
         }
@@ -89,8 +89,8 @@ public class Player {
 
     public void goWest() {
         if(route.isPath(posX-1, posY)) {
-            view.handleMove(new Move("You go West."));
             posX--;
+            route.update(posX, posY);
         } else {
             view.handleMove(new Move("You go West but you face a wall."));
         }
@@ -98,8 +98,8 @@ public class Player {
 
     public void goEast() {
         if(route.isPath(posX+1, posY)) {
-            view.handleMove(new Move("You go East."));
             posX++;
+            route.update(posX, posY);
         } else {
             view.handleMove(new Move("You go East but you face a wall."));
         }
