@@ -1,15 +1,12 @@
 package model.player;
 
 import model.labyrinth.graph_classes.CoverTree;
-import model.room.EmptyRoom;
-import model.room.LastRoom;
-import model.room.Room;
-import model.room.RoomGenerator;
+import model.room.*;
 
 public class Route {
 
-    private static final int WIDTH = 50;
-    private static final int HEIGHT = 50;
+    private static final int WIDTH = 10;
+    private static final int HEIGHT = 10;
     private static final Room EMPTY_ROOM = new EmptyRoom();
     private static final Room LAST_ROOM = new LastRoom();
 
@@ -53,7 +50,8 @@ public class Route {
             currentRoom = EMPTY_ROOM;
             return;
         }
-        currentRoom = generator.createRoom();
+        //currentRoom = generator.createRoom();
+        currentRoom = new MonsterRoom();
         visitedRooms[row][column] = true;
     }
 

@@ -11,9 +11,10 @@ public class MonsterRoom implements Room{
 
     @Override
     public void event(Player player) {
-        player.getView().handleMove(new Move(
-                "A monster appeared! " + monster.getString()
-        ));
+        System.out.println("sltatouslesamis");
+        player.getCombatSystem().fight(monster);
+        System.out.println("miss jirachi");
+        //player.getView().handleMove(new Move("test"));
         //TODO
     }
 }

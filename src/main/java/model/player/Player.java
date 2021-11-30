@@ -1,6 +1,10 @@
 package model.player;
 
 import model.Move;
+import model.combat.CombatSystem;
+import model.combat.MonsterFirst;
+import model.combat.PlayerFirst;
+import model.room_element.monster.Monster;
 import model.room_element.treasure.Potion;
 import model.inventory.ClosedInventory;
 import model.inventory.Inventory;
@@ -14,6 +18,11 @@ public class Player {
     PlayerState state;
     int posX, posY;
     Route route;
+    int life;
+    int strength;
+    int MAX_LIFE = 15;
+    CombatSystem combatSystem;
+
 
     public Player(View view) {
         this.view = view;
@@ -22,27 +31,41 @@ public class Player {
         posX = 0;
         posY = 0;
         route = new Route(this);
-        //fakeInventory();
+        this.life = MAX_LIFE;
+        this.strength = 5;
+        this.combatSystem = new MonsterFirst(this);
     }
 
-    public Route getRoute() {
-        return this.route;
+    public int getLife() {
+        return life;
     }
 
-    private void fakeInventory() {
-        for (int i = 0; i < 5; i++) {
-            inventory.addItem(new Potion());
-        }
-
+    public int getStrength() {
+        return strength;
     }
 
-    public void setPosX(int posX) {
-        this.posX = posX;
+    public CombatSystem getCombatSystem() {
+        return combatSystem;
     }
 
-    public void setPosY(int posY) {
-        this.posY = posY;
+    public void setLife(int lifeValue) {
+        this.life = lifeValue;
     }
+
+    public void setStrength(int strengthValue) {
+        this.strength = strengthValue;
+    }
+
+    public void hit(Monster monster){
+        System.out.println("tu tapes le monstre ma belle");
+        monster.setLife(monster.getLife()-this.strength);
+        System.out.println(monster.getLife());
+    }
+
+
+    public boolean isDead() { return life <= 0; }
+
+
 
     public int getPosX() {
         return posX;

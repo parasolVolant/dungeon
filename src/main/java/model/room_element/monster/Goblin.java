@@ -1,9 +1,16 @@
 package model.room_element.monster;
 
-public class Goblin implements Monster{
+public class Goblin extends AbstractMonster {
+
+    public Goblin() {
+        this.life = 10;
+        this.strength = 3;
+        this.name = "Goblin";
+    }
+
 
     @Override
-    public String getString() {
+    public String getName() {
         return "Goblin";
     }
 
