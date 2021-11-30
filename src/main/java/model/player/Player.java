@@ -3,6 +3,8 @@ package model.player;
 import javafx.geometry.Point2D;
 import model.Move;
 import model.combat.CombatSystem;
+import model.combat.MonsterFirst;
+import model.combat.PlayerFirst;
 import model.game.Route;
 import model.roomElement.monster.Monster;
 import model.roomElement.treasure.Potion;
@@ -14,7 +16,7 @@ import view.View;
 import javax.swing.text.Position;
 
 public class Player {
-    View view ;
+    public View view ;
     Inventory inventory;
     PlayerState state;
     int posX, posY;
@@ -22,7 +24,7 @@ public class Player {
     private int life;
     private int strength;
     public final int MAX_LIFE = 15;
-    CombatSystem combatSystem;
+    public CombatSystem combatSystem;
 
 
     public Player(View view) {
@@ -33,22 +35,14 @@ public class Player {
         posY = 0;
         route = new Route(this);
         fakeInventory();
-    }
-
-    public Player(View view, Route route) {
-        this.view = view;
-        inventory = new Inventory(view);
-        state = new InAdventureState(this);
-        posX = 0;
-        posY = 0;
-        this.route = route;
-    }
-
-    public Player(CombatSystem combatSystem){
-        this.combatSystem = combatSystem;
         this.life = MAX_LIFE;
         this.strength = 5;
+        this.combatSystem = new PlayerFirst(this);
     }
+
+
+
+
 
     public int getLife() {
         return life;
@@ -165,4 +159,10 @@ public class Player {
         inventory.show();
         //view.handleMove(new Move(inventory.show()));
     }
+
+
+
+
+
+
 }

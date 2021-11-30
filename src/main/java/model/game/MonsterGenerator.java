@@ -13,8 +13,8 @@ public class MonsterGenerator extends AbstractGenerator{
     @Override
     public RoomElement generate() {
 
-        //addElement(new Orc());
-       // addElement(new Goblin());
+       addElement(new Orc());
+       addElement(new Goblin());
 
 
 

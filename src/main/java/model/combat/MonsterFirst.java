@@ -1,33 +1,78 @@
 package model.combat;
 
+import model.Move;
+import model.inventory.Inventory;
 import model.player.Player;
+import model.roomElement.monster.Goblin;
 import model.roomElement.monster.Monster;
 
-public class MonsterFirst extends AbstractCombatSystem{
+public class MonsterFirst implements CombatSystem{
+
+    Player player;
+
+
 
 
     public MonsterFirst(Player player) {
-        super(player);
-        this.sb = new StringBuilder();
+        this.player = player;
+
     }
-
-
-
 
     @Override
     public void fight(Monster monster) {
-        sb.append("A fight begins ! A wild "+ monster.getName() +" appears"); sb.append("\n");
+
+        StringBuilder sb = new StringBuilder();
+
         while (!player.isDead() && !monster.isDead() ){
+
             monster.hit(player);
-            sb.append(monster.getName() + " hits : your life : "+ player.getLife()); sb.append("\n");
-            if(player.isDead()) {sb.append("You lost the fight"); System.out.println(sb.toString()); return;}
-            else if(monster.isDead()) {sb.append("You won the fight"); System.out.println(sb.toString()); return;}
+
+            sb.append(monster.getName() + " does " + monster.getStrength() + " damage. " +  " Your  remaining life is : "  + player.getLife()); sb.append("\n\n");
+
+            if(player.isDead()) {
+
+                sb.append("You lost the fight...");
+                System.out.println(sb);
+                player.view.handleMove(new Move(sb.toString()));
+                return;
+            }
+            else if(monster.isDead()) {
+
+                sb.append("You won the fight!");
+                System.out.println(sb);
+                player.view.handleMove(new Move(sb.toString()));
+                return;
+            }
             player.hit(monster);
-            sb.append("You hits  " + monster.getName() + " life : "+ monster.getLife());  sb.append("\n");
-            if(monster.isDead()){ sb.append("You won the fight");System.out.println(sb.toString());return;}
-            else if(player.isDead()) {sb.append("You lost the fight"); System.out.println(sb.toString()); return;}
+
+            sb.append("You hit " + monster.getName() +  " and inflict " + player.getStrength() + " damage."); sb.append("\n\n");
+
+            if(monster.isDead()) {
+
+                sb.append("You won the fight!");
+                System.out.println(sb);
+                player.view.handleMove(new Move(sb.toString()));
+                return;
+            }
+
+            else if(player.isDead()) {
+
+                sb.append("You lost the fight...");
+                System.out.println(sb);
+               player.view.handleMove(new Move(sb.toString()));
+                return;
+            }
+
         }
 
 
+
+
+
     }
+
+
+
+
+
 }

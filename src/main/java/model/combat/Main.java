@@ -13,13 +13,15 @@ public class Main {
 
 
     public static void main(String[] args) {
-       // Player player = new Player();
-        Monster monster = new Orc();
+      /*Player player = new Player();
+       Monster monster = new Orc();
 
-       // CombatSystem newCombat = new MonsterFirst(player);
+     CombatSystem newCombat = new MonsterFirst(player);
 
 
-        //newCombat.fight(monster);
+     newCombat.fight(monster);*/
+
+
 
 
     }
