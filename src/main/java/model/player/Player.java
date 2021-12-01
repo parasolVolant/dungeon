@@ -1,39 +1,37 @@
 package model.player;
 
+import controller.GameController;
+import controller.AdventureController;
+import controller.InventoryController;
 import model.Move;
-import model.combat.CombatSystem;
-import model.combat.MonsterFirst;
-import model.combat.PlayerFirst;
+import model.game.Game;
 import model.room_element.monster.Monster;
-import model.room_element.treasure.Potion;
 import model.inventory.ClosedInventory;
 import model.inventory.Inventory;
 import model.inventory.OpenedInventory;
 import model.room_element.treasure.Treasure;
-import view.View;
 
 public class Player {
-    View view ;
+
+    Game game;
     Inventory inventory;
-    PlayerState state;
+    //GameController controller;
     int posX, posY;
-    Route route;
     int life;
     int strength;
     int MAX_LIFE = 15;
-    CombatSystem combatSystem;
 
 
-    public Player(View view) {
-        this.view = view;
-        inventory = new Inventory(view);
-        state = new InAdventureState(this);
+
+    public Player() {
+
+        game = new Game(game.getWidth(),game.getHeight(),game.getView());
+        inventory = new Inventory(game.getView());
         posX = 0;
         posY = 0;
-        route = new Route(this);
         this.life = MAX_LIFE;
         this.strength = 5;
-        this.combatSystem = new MonsterFirst(this);
+
     }
 
     public int getLife() {
@@ -44,9 +42,6 @@ public class Player {
         return strength;
     }
 
-    public CombatSystem getCombatSystem() {
-        return combatSystem;
-    }
 
     public void setLife(int lifeValue) {
         this.life = lifeValue;
@@ -79,52 +74,49 @@ public class Player {
         return inventory;
     }
 
-    public View getView() {
-        return view;
+
+    /*public GameController getController() {
+        return controller;
     }
 
-    public PlayerState getState() {
-        return state;
-    }
-
-    public void changeState(PlayerState newState) {
-        state = newState;
-    }
+    public void changeState(GameController newState) {
+        controller = newState;
+    }*/
 
 
     public void goNorth() {
-        if(route.isPath(posX, posY-1)) {
+        if(game.getRoute().isPath(posX, posY-1)) {
             posY--;
-            route.update(posX, posY);
+            game.getRoute().update(posX, posY);
         } else {
-            view.handleMove(new Move("You go North but you face a wall."));
+            game.getView().handleMove(new Move("You go North but you face a wall."));
         }
     }
 
     public void goSouth() {
-        if(route.isPath(posX, posY+1)) {
+        if(game.getRoute().isPath(posX, posY+1)) {
             posY++;
-            route.update(posX, posY);
+            game.getRoute().update(posX, posY);
         } else {
-            view.handleMove(new Move("You go South but you face a wall."));
+            game.getView().handleMove(new Move("You go South but you face a wall."));
         }
     }
 
     public void goWest() {
-        if(route.isPath(posX-1, posY)) {
+        if(game.getRoute().isPath(posX-1, posY)) {
             posX--;
-            route.update(posX, posY);
+            game.getRoute().update(posX, posY);
         } else {
-            view.handleMove(new Move("You go West but you face a wall."));
+            game.getView().handleMove(new Move("You go West but you face a wall."));
         }
     }
 
     public void goEast() {
-        if(route.isPath(posX+1, posY)) {
+        if(game.getRoute().isPath(posX+1, posY)) {
             posX++;
-            route.update(posX, posY);
+            game.getRoute().update(posX, posY);
         } else {
-            view.handleMove(new Move("You go East but you face a wall."));
+            game.getView().handleMove(new Move("You go East but you face a wall."));
         }
     }
 
@@ -133,14 +125,14 @@ public class Player {
     }
 
     public void openInventory() {
-        this.changeState(new InInventoryState(this));
+        game.changeController(new InventoryController(game));
         inventory.changeState(new OpenedInventory());
         inventory.show();
         //view.handleMove(new Move(inventory.show()));
     }
 
     public void closeInventory() {
-        this.changeState(new InAdventureState(this));
+        game.changeController(new AdventureController(game));
         inventory.changeState(new ClosedInventory());
         inventory.show();
         //view.handleMove(new Move(inventory.show()));

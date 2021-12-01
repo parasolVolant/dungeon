@@ -1,6 +1,7 @@
 package model.combat;
 
 import model.Move;
+import model.game.Game;
 import model.inventory.Inventory;
 import model.player.Player;
 import model.room_element.monster.Goblin;
@@ -10,11 +11,16 @@ public class MonsterFirst implements CombatSystem{
 
     Player player;
 
+   Game game;
 
 
 
-    public MonsterFirst(Player player) {
-        this.player = player;
+
+
+    public MonsterFirst( Game game) {
+        this.game = game;
+        this.player = game.getPlayer();
+
 
     }
 
@@ -37,14 +43,14 @@ public class MonsterFirst implements CombatSystem{
 
                 sb.append("You lost the fight...");
                 System.out.println(sb);
-                player.getView().handleMove(new Move(sb.toString()));
+                game.getView().handleMove(new Move(sb.toString()));
                 return;
             }
             else if(monster.isDead()) {
 
                 sb.append("You won the fight!");
                 System.out.println(sb);
-                player.getView().handleMove(new Move(sb.toString()));
+                game.getView().handleMove(new Move(sb.toString()));
                 return;
             }
             player.hit(monster);
@@ -55,7 +61,7 @@ public class MonsterFirst implements CombatSystem{
 
                 sb.append("You won the fight!");
                 System.out.println(sb);
-                player.getView().handleMove(new Move(sb.toString()));
+                game.getView().handleMove(new Move(sb.toString()));
                 return;
             }
 
@@ -63,7 +69,7 @@ public class MonsterFirst implements CombatSystem{
 
                 sb.append("You lost the fight...");
                 System.out.println(sb);
-                player.getView().handleMove(new Move(sb.toString()));
+                game.getView().handleMove(new Move(sb.toString()));
                 return;
             }
 
