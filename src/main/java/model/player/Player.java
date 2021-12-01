@@ -4,6 +4,7 @@ import model.Move;
 import model.combat.CombatSystem;
 import model.combat.MonsterFirst;
 import model.combat.PlayerFirst;
+import model.game.Game;
 import model.room_element.monster.Monster;
 import model.room_element.treasure.Potion;
 import model.inventory.ClosedInventory;
@@ -13,6 +14,7 @@ import model.room_element.treasure.Treasure;
 import view.View;
 
 public class Player {
+    Game game;
     View view ;
     Inventory inventory;
     PlayerState state;
@@ -24,13 +26,15 @@ public class Player {
     CombatSystem combatSystem;
 
 
-    public Player(View view) {
-        this.view = view;
+
+    public Player(Game game) {
+        this.game = game;
+        this.view = game.getView();
         inventory = new Inventory(view);
-        state = new InAdventureState(this);
         posX = 0;
         posY = 0;
-        route = new Route(this);
+        route = game.getRoute();
+        state = new InAdventureState(this);
         this.life = MAX_LIFE;
         this.strength = 5;
         this.combatSystem = new MonsterFirst(this);

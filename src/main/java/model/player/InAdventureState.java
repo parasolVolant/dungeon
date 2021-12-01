@@ -1,6 +1,7 @@
 package model.player;
 
 import javafx.scene.input.KeyEvent;
+import model.game.Game;
 import model.room.*;
 
 public class InAdventureState implements PlayerState{

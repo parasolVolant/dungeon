@@ -1,12 +1,13 @@
 package model.player;
 
+import model.game.Game;
 import model.labyrinth.graph_classes.CoverTree;
 import model.room.*;
 
 public class Route {
 
-    private static final int WIDTH = 10;
-    private static final int HEIGHT = 10;
+    private int width;
+    private int height;
     private static final Room EMPTY_ROOM = new EmptyRoom();
     private static final Room LAST_ROOM = new LastRoom();
 
@@ -16,10 +17,12 @@ public class Route {
     Room currentRoom;
     RoomGenerator generator;
 
-    public Route(Player player) {
-        this.player = player;
-        visitedRooms = new boolean[WIDTH][HEIGHT];
-        coverTree = new CoverTree(WIDTH, HEIGHT);
+    public Route(Game game) {
+        this.player = game.getPlayer();
+        this.width= game.getWidth();
+        this.height= game.getHeight();
+        visitedRooms = new boolean[width][height];
+        coverTree = new CoverTree(width, height);
         currentRoom = new EmptyRoom();
         visitedRooms[0][0] = true;
         generator = new RoomGenerator();
@@ -34,7 +37,7 @@ public class Route {
     }
 
     private boolean isLast() {
-        return player.getPosX() == WIDTH-1 && player.getPosY() == HEIGHT-1;
+        return player.getPosX() == width-1 && player.getPosY() == height-1;
     }
 
     private void event() {
