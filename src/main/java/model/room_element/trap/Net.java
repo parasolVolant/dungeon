@@ -2,13 +2,10 @@ package model.room_element.trap;
 
 import model.player.Player;
 
-public class Net implements Trap {
+public class Net extends AbstractTrap  {
 
-    int damage = 1;
-
-    @Override
-    public void hurt(Player player) {
-        //TODO
+    public Net(){
+        damage = 2;
     }
 
     @Override
