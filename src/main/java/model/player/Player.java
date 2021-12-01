@@ -79,7 +79,13 @@ public class Player {
         monster.setLife(monster.getLife()-this.strength);
     }
 
-    public boolean isDead() { return life <= 0; }
+    public boolean isDead() {
+        if(life <= 0) {
+            changeState(new DeadState(this));
+            return true;
+        }
+        return false;
+    }
 
     public int getPosX() {
         return posX;
