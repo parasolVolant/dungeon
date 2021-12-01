@@ -11,12 +11,14 @@ public class Inventory {
     InventoryState state;
     View view;
     int maxSize;
+    int index;
 
     public Inventory(View view) {
         maxSize = 5;
-        this.items = new ArrayList<>();
-        this.state = new ClosedInventory();
+        items = new ArrayList<>();
+        state = new ClosedInventory();
         this.view = view;
+        index = 0;
     }
 
     public boolean isFull() {
@@ -27,15 +29,39 @@ public class Inventory {
         state = newState;
     }
 
+    public void setIndexToStart() {
+        this.index = 0;
+    }
+
+    public void decreaseIndex() {
+        if(items.isEmpty()) return;
+        if(index <= 0) {
+            index = items.size()-1;
+        } else {
+            index--;
+        }
+        //index =  ((index - 1) % (maxSize) + maxSize) % maxSize;
+        System.out.println(index);
+        show();
+    }
+
+    public void increaseIndex() {
+        if(items.isEmpty()) return;
+        index =  (index + 1) % items.size();
+        System.out.println(index);
+        show();
+    }
+
     public void addItem(Treasure item){
         if(isFull()) return;
         items.add(item);
     }
 
-    public Treasure removeItem(int index) {
+    public Treasure removeItem() {
         if (index >= items.size()) return null;
         Treasure item = items.get(index);
         items.remove(index);
+        decreaseIndex();
         return item;
     }
 

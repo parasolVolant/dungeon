@@ -16,14 +16,19 @@ public class OpenedInventory implements InventoryState {
         List<Treasure> items = inventory.items;
         int size = inventory.items.size();
         int maxSize = inventory.maxSize;
+        int inventoryIndex = inventory.index;
 
         StringBuilder sb = new StringBuilder("Inventory " + size +"/"+maxSize+" :  \n");
         for (int i = 0; i < items.size(); i++) {
-            sb.append("\t")
-                    .append(i)
-                    .append(" - ")
-                    .append(items.get(i).toString())
-                    .append("\n");
+            sb.append("\t");
+
+            if (i == inventoryIndex) {
+                sb.append("-> ");
+            }
+
+        sb.append(" - ")
+                .append(items.get(i).toString())
+                .append("\n");
         }
         return sb.toString();
     }

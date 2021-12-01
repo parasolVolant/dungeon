@@ -133,6 +133,7 @@ public class Player {
     }
 
     public void openInventory() {
+        inventory.setIndexToStart();
         this.changeState(new InInventoryState(this));
         inventory.changeState(new OpenedInventory());
         inventory.show();
@@ -146,11 +147,16 @@ public class Player {
         //view.handleMove(new Move(inventory.show()));
     }
 
-    public void useItem(int index) {
-        Treasure item = inventory.removeItem(index);
+    public void useItem() {
+        Treasure item = inventory.removeItem();
         try {
             item.equip(this);
         } catch (NullPointerException ignored) {}
+        inventory.show();
+    }
+
+    public void deleteItem() {
+        inventory.removeItem();
         inventory.show();
     }
 

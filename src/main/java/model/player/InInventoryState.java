@@ -14,11 +14,10 @@ public class InInventoryState implements PlayerState{
     public void handle(KeyEvent event) {
         switch (event.getCode()) {
             case I:  player.closeInventory(); break;
-            case DIGIT1: player.useItem(0); break;
-            case DIGIT2: player.useItem(1); break;
-            case DIGIT3: player.useItem(2); break;
-            case DIGIT4: player.useItem(3); break;
-            case DIGIT5: player.useItem(4); break;
+            case UP: player.getInventory().decreaseIndex(); break;
+            case DOWN: player.getInventory().increaseIndex(); break;
+            case A: player.useItem(); break;
+            case Z: player.deleteItem(); break;
         }
     }
 }
