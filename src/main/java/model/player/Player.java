@@ -1,7 +1,9 @@
 package model.player;
 
 import controller.AdventureController;
+import controller.EndGameController;
 import controller.InventoryController;
+import controller.StatusController;
 import model.Move;
 import model.combat.CombatSystem;
 import model.combat.MonsterFirst;
@@ -13,6 +15,11 @@ import model.inventory.ClosedInventory;
 import model.inventory.Inventory;
 import model.inventory.OpenedInventory;
 import model.room_element.treasure.Treasure;
+import model.room_element.treasure.weapon.Fists;
+import model.room_element.treasure.weapon.Weapon;
+import model.status.ClosedStatus;
+import model.status.OpenStatus;
+import model.status.Status;
 import view.View;
 
 public class Player {
@@ -24,9 +31,11 @@ public class Player {
     int posX, posY;
     int life;
     int strength;
+    int BASE_STRENGTH = 3;
     int MAX_LIFE = 15;
+    Weapon weapon;
     //CombatSystem combatSystem;
-
+    Status status;
 
 
 
@@ -38,8 +47,10 @@ public class Player {
         posX = 0;
         posY = 0;
        // state = new InAdventureState(game);
+        weapon = new Fists();
         this.life = MAX_LIFE;
-        this.strength = 5;
+        this.strength = BASE_STRENGTH;
+        status = new Status(this);
         //this.combatSystem = game.getCombatSystem();
     }
 
@@ -50,6 +61,31 @@ public class Player {
     public int getStrength() {
         return strength;
     }
+
+    public int getMaxLife() {
+        return MAX_LIFE;
+    }
+
+    public int getBaseStrength() {
+        return BASE_STRENGTH;
+    }
+
+
+    public void setWeapon(Weapon weapon) {
+        inventory.addItem(this.weapon);
+        this.weapon = weapon;
+    }
+
+
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+
+    public Status getStatus() {
+        return status;
+    }
+
 
     /*public CombatSystem getCombatSystem() {
         return combatSystem;
@@ -70,7 +106,15 @@ public class Player {
     }
 
 
-    public boolean isDead() { return life <= 0; }
+    public boolean isDead() {
+        if(life <= 0) {
+            game.changeController(new EndGameController(game));
+            return true;
+        }
+        return false;
+    }
+
+
 
 
 
@@ -162,6 +206,19 @@ public class Player {
         //view.handleMove(new Move(inventory.show()));
     }
 
+    public void openStatus() {
+        game.changeController(new StatusController(game));
+        status.setStatus(this);
+        status.changeState(new OpenStatus());
+        status.show();
+    }
+
+    public void closeStatus() {
+        game.changeController(new AdventureController(game));
+        status.changeState(new ClosedStatus());
+        status.show();
+    }
+
     public void useItem() {
         Treasure item = inventory.removeItem();
         try {
@@ -174,5 +231,6 @@ public class Player {
         inventory.removeItem();
         inventory.show();
     }
+
 
 }

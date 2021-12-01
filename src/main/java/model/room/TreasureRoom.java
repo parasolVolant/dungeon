@@ -12,13 +12,18 @@ public class TreasureRoom implements Room{
 
     @Override
     public void event(Game game) {
-        StringBuilder message = new StringBuilder("You found a "+item.toString()+". \n");
-        if(game.getPlayer().isFull()) {
+        Player player = game.getPlayer();
+
+        StringBuilder message = new StringBuilder("You found a "+item.getName()+". \n");
+        if(player.isFull()) {
             message.append("Unfortunately, your inventory is full.");
         } else {
             message.append("You put it in your inventory.");
-            game.getPlayer().getInventory().addItem(item);
+            player.getInventory().addItem(item);
         }
         game.getView().handleMove(new Move(message.toString()));
     }
+
+
 }
+

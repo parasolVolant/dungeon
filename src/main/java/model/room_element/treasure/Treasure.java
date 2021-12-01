@@ -4,7 +4,8 @@ import model.player.Player;
 
 public interface Treasure {
 
-    String toString();
+    String getName();
     void equip(Player player);
 
 }
+
