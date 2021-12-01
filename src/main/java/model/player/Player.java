@@ -11,6 +11,7 @@ import model.inventory.Inventory;
 import model.inventory.OpenedInventory;
 import model.room_element.treasure.Treasure;
 import model.room_element.treasure.weapon.Fists;
+import model.room_element.treasure.weapon.Sword;
 import model.room_element.treasure.weapon.Weapon;
 import view.View;
 
@@ -43,6 +44,10 @@ public class Player {
 
     public int getLife() {
         return life;
+    }
+
+    public int getMaxLife() {
+        return MAX_LIFE;
     }
 
     public int getStrength() {

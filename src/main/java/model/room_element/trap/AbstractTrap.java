@@ -2,7 +2,7 @@ package model.room_element.trap;
 
 import model.player.Player;
 
-public abstract class AbstractTrap implements Trap{
+public abstract class AbstractTrap implements Trap {
 
     int damage;
 

@@ -5,8 +5,8 @@ import model.room.*;
 
 public class Route {
 
-    private static final int WIDTH = 10;
-    private static final int HEIGHT = 10;
+    private static final int WIDTH = 3;
+    private static final int HEIGHT = 3;
     private static final Room EMPTY_ROOM = new EmptyRoom();
     private static final Room LAST_ROOM = new LastRoom();
 
