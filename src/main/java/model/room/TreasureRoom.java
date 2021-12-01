@@ -11,7 +11,7 @@ public class TreasureRoom implements Room{
 
     @Override
     public void event(Player player) {
-        StringBuilder message = new StringBuilder("You found a "+item.toString()+". \n");
+        StringBuilder message = new StringBuilder("You found a "+item.getName()+". \n");
         if(player.isFull()) {
             message.append("Unfortunately, your inventory is full.");
         } else {

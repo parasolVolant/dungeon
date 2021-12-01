@@ -1,5 +1,7 @@
 package model.room_element.treasure;
 
+import model.room_element.treasure.weapon.Stick;
+
 import java.util.Random;
 
 public class TreasureGenerator {

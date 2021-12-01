@@ -27,7 +27,7 @@ public class OpenedInventory implements InventoryState {
             }
 
         sb.append(" - ")
-                .append(items.get(i).toString())
+                .append(items.get(i).getName())
                 .append("\n");
         }
         return sb.toString();

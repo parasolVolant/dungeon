@@ -41,14 +41,12 @@ public class Inventory {
             index--;
         }
         //index =  ((index - 1) % (maxSize) + maxSize) % maxSize;
-        System.out.println(index);
         show();
     }
 
     public void increaseIndex() {
         if(items.isEmpty()) return;
         index =  (index + 1) % items.size();
-        System.out.println(index);
         show();
     }
 

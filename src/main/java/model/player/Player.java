@@ -10,6 +10,8 @@ import model.inventory.ClosedInventory;
 import model.inventory.Inventory;
 import model.inventory.OpenedInventory;
 import model.room_element.treasure.Treasure;
+import model.room_element.treasure.weapon.Fists;
+import model.room_element.treasure.weapon.Weapon;
 import view.View;
 
 public class Player {
@@ -20,7 +22,9 @@ public class Player {
     Route route;
     int life;
     int strength;
+    int BASE_STRENGTH = 3;
     int MAX_LIFE = 15;
+    Weapon weapon;
     CombatSystem combatSystem;
 
 
@@ -32,7 +36,8 @@ public class Player {
         posY = 0;
         route = new Route(this);
         this.life = MAX_LIFE;
-        this.strength = 5;
+        this.strength = BASE_STRENGTH;
+        weapon = new Fists();
         this.combatSystem = new MonsterFirst(this);
     }
 
@@ -42,6 +47,15 @@ public class Player {
 
     public int getStrength() {
         return strength;
+    }
+
+    public int getBaseStrength() {
+        return BASE_STRENGTH;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        inventory.addItem(this.weapon);
+        this.weapon = weapon;
     }
 
     public CombatSystem getCombatSystem() {
@@ -60,10 +74,7 @@ public class Player {
         monster.setLife(monster.getLife()-this.strength);
     }
 
-
     public boolean isDead() { return life <= 0; }
-
-
 
     public int getPosX() {
         return posX;

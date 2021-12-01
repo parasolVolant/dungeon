@@ -5,7 +5,7 @@ import model.player.Player;
 public class Potion implements Treasure {
 
     @Override
-    public String toString() {
+    public String getName() {
         return "Potion";
     }
 
