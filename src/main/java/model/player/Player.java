@@ -14,16 +14,16 @@ import model.room_element.treasure.Treasure;
 import view.View;
 
 public class Player {
-    Game game;
-    View view ;
-    Route route;
-    Inventory inventory;
-    PlayerState state;
+    private Game game;
+    private View view ;
+    private Route route;
+    private Inventory inventory;
+    private PlayerState state;
     int posX, posY;
     int life;
     int strength;
     int MAX_LIFE = 15;
-    CombatSystem combatSystem;
+    //CombatSystem combatSystem;
 
 
 
@@ -35,10 +35,10 @@ public class Player {
         route = new Route(this);
         posX = 0;
         posY = 0;
-        state = new InAdventureState(this);
+        state = new InAdventureState(game);
         this.life = MAX_LIFE;
         this.strength = 5;
-        this.combatSystem = new MonsterFirst(this);
+        //this.combatSystem = game.getCombatSystem();
     }
 
     public int getLife() {
@@ -49,9 +49,9 @@ public class Player {
         return strength;
     }
 
-    public CombatSystem getCombatSystem() {
+    /*public CombatSystem getCombatSystem() {
         return combatSystem;
-    }
+    }*/
 
     public void setLife(int lifeValue) {
         this.life = lifeValue;
@@ -84,9 +84,9 @@ public class Player {
         return inventory;
     }
 
-    public View getView() {
+    /*public View getView() {
         return view;
-    }
+    }*/
 
     public Game getGame() {
         return game;
@@ -150,7 +150,7 @@ public class Player {
     }
 
     public void closeInventory() {
-        this.changeState(new InAdventureState(this));
+        this.changeState(new InAdventureState(game));
         inventory.changeState(new ClosedInventory());
         inventory.show();
         //view.handleMove(new Move(inventory.show()));

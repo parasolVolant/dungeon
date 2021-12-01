@@ -18,10 +18,10 @@ public class Game {
     private View view;
 
 
-    public Game(int width,int height,View view){
+    public Game(int width,int height,View view,CombatSystem combatSystem){
         this.width = width;
         this.height = height;
-        //this.combatSystem = new MonsterFirst(this);
+        this.combatSystem = combatSystem;
         //gameController = new AdventureController(this);
         this.view = view;
         this.player = new Player(this);
@@ -48,9 +48,9 @@ public class Game {
     }
 
 
-   /* public CombatSystem getCombatSystem(){
+   public CombatSystem getCombatSystem(){
         return combatSystem;
-    }*/
+    }
 
     /*public GameController getController() {
         return gameController;

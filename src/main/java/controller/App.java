@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.combat.CombatSystem;
+import model.combat.MonsterFirst;
 import model.game.Game;
 import model.player.Player;
 import view.JavaFXView;
@@ -36,9 +38,9 @@ public class App extends Application {
         root.getChildren().add(message);
         root.getChildren().add(new Canvas(400,200));
         Scene scene = new Scene(root);
-        Game game = new Game(5,5,view);
-        JavaFXController javaFXController = new JavaFXController(game.getPlayer());
-        scene.setOnKeyPressed(javaFXController.eventHandler);
+        //Game game = new Game(5,5,view);
+        //JavaFXController javaFXController = new JavaFXController(game.getPlayer());
+       // scene.setOnKeyPressed(javaFXController.eventHandler);
         primaryStage.setScene(scene);
         primaryStage.show();
 

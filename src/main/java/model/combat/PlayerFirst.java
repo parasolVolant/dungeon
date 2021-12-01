@@ -1,6 +1,7 @@
 package model.combat;
 
 import model.Move;
+import model.game.Game;
 import model.inventory.Inventory;
 import model.player.Player;
 import model.room_element.monster.Monster;
@@ -9,11 +10,11 @@ public class PlayerFirst implements CombatSystem{
 
 
     Player player;
+    Game game;
 
+    public PlayerFirst(Game game) {
 
-    public PlayerFirst(Player player) {
-
-        this.player = player;
+        this.player = game.getPlayer();
 
     }
 
@@ -32,7 +33,7 @@ public class PlayerFirst implements CombatSystem{
 
                 sb.append("You lost the fight");
                 System.out.println(sb);
-                player.getView().handleMove(new Move(sb.toString()));
+                game.getView().handleMove(new Move(sb.toString()));
                 return;
             }
 
@@ -41,7 +42,7 @@ public class PlayerFirst implements CombatSystem{
 
                 sb.append("You won the fight!");
                 System.out.println(sb);
-                player.getView().handleMove(new Move(sb.toString()));
+                game.getView().handleMove(new Move(sb.toString()));
                 return;
             }
 
@@ -54,7 +55,7 @@ public class PlayerFirst implements CombatSystem{
 
                 sb.append("You won the fight");
                 System.out.println(sb);
-                player.getView().handleMove(new Move(sb.toString()));
+                game.getView().handleMove(new Move(sb.toString()));
                 return;
 
             }
@@ -63,7 +64,7 @@ public class PlayerFirst implements CombatSystem{
 
                 sb.append("You lost the fight");
                 System.out.println(sb);
-                player.getView().handleMove(new Move(sb.toString()));
+                game.getView().handleMove(new Move(sb.toString()));
                 return;
 
             }

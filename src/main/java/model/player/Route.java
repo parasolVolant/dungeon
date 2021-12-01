@@ -41,7 +41,7 @@ public class Route {
     }
 
     private void event() {
-        currentRoom.event(player);
+        currentRoom.event(player.getGame());
     }
 
     private void setCurrentRoom(int row,int column){
