@@ -1,8 +1,8 @@
-package model.player;
+package controller;
 
 import javafx.scene.input.KeyEvent;
 
-public interface PlayerState {
+public interface GameController {
 
     void handle(KeyEvent event);
 }

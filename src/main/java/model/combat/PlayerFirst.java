@@ -9,17 +9,18 @@ import model.room_element.monster.Monster;
 public class PlayerFirst implements CombatSystem{
 
 
-    Player player;
+
     Game game;
 
     public PlayerFirst(Game game) {
 
-        this.player = game.getPlayer();
-
+        this.game = game;
     }
 
     @Override
     public void fight(Monster monster) {
+
+        Player player = game.getPlayer();
 
         StringBuilder sb = new StringBuilder("A monster appeared! Fight!\n\n");
 

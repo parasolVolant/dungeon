@@ -15,7 +15,7 @@ public class JavaFXController {
          @Override
 
          public void handle(KeyEvent event) {
-             game.getPlayer().getState().handle(event);
+             game.getController().handle(event);
          }
     }; }
 }

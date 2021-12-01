@@ -1,9 +1,10 @@
 package model.game;
 
+import controller.AdventureController;
+import controller.GameController;
 import model.combat.CombatSystem;
 import model.combat.MonsterFirst;
 import model.player.Player;
-import model.player.Route;
 import view.View;
 
 public class Game {
@@ -14,17 +15,19 @@ public class Game {
     private int height;
     private Player player;
     private CombatSystem combatSystem;
-    //private GameController gameController;
+    //private PlayerState state;
+    private GameController gameController;
     private View view;
 
 
     public Game(int width,int height,View view){
         this.width = width;
         this.height = height;
-        //gameController = new AdventureController(this);
         this.view = view;
         this.player = new Player(this);
         this.combatSystem = new MonsterFirst(this);
+        gameController = new AdventureController(this);
+        //state = new InAdventureState(this);
 
 
     }
@@ -51,6 +54,31 @@ public class Game {
    public CombatSystem getCombatSystem(){
         return combatSystem;
     }
+
+
+
+
+
+
+
+    public GameController getController() {
+        return gameController;
+    }
+
+    public void changeController(GameController newController) {
+        gameController = newController;
+    }
+
+/*
+    public PlayerState getState() {
+        return state;
+    }
+
+    public void changeState(PlayerState newState) {
+        state = newState;
+    }
+
+*/
 
     /*public GameController getController() {
         return gameController;

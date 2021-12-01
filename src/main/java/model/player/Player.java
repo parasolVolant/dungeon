@@ -1,5 +1,7 @@
 package model.player;
 
+import controller.AdventureController;
+import controller.InventoryController;
 import model.Move;
 import model.combat.CombatSystem;
 import model.combat.MonsterFirst;
@@ -18,7 +20,7 @@ public class Player {
     private View view ;
     private Route route;
     private Inventory inventory;
-    private PlayerState state;
+    //private PlayerState state;
     int posX, posY;
     int life;
     int strength;
@@ -35,7 +37,7 @@ public class Player {
         route = new Route(this);
         posX = 0;
         posY = 0;
-        state = new InAdventureState(game);
+       // state = new InAdventureState(game);
         this.life = MAX_LIFE;
         this.strength = 5;
         //this.combatSystem = game.getCombatSystem();
@@ -92,13 +94,13 @@ public class Player {
         return game;
     }
 
-    public PlayerState getState() {
+   /* public PlayerState getState() {
         return state;
     }
 
     public void changeState(PlayerState newState) {
         state = newState;
-    }
+    }*/
 
 
     public void goNorth() {
@@ -143,14 +145,18 @@ public class Player {
 
     public void openInventory() {
         inventory.setIndexToStart();
-        this.changeState(new InInventoryState(this));
+        //game.changeState(new InInventoryState(game));
+        //game.changeState(new InInventoryState(game));
+        game.changeController(new InventoryController(game));
         inventory.changeState(new OpenedInventory());
         inventory.show();
         //view.handleMove(new Move(inventory.show()));
     }
 
     public void closeInventory() {
-        this.changeState(new InAdventureState(game));
+        //this.changeState(new InAdventureState(game));
+        //game.changeState(new InAdventureState(game));
+        game.changeController(new AdventureController(game));
         inventory.changeState(new ClosedInventory());
         inventory.show();
         //view.handleMove(new Move(inventory.show()));

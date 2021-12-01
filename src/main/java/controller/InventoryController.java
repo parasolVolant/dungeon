@@ -1,17 +1,22 @@
-package model.player;
+package controller;
 
 import javafx.scene.input.KeyEvent;
+import model.game.Game;
+import model.player.Player;
 
-public class InInventoryState implements PlayerState{
+public class InventoryController implements GameController {
 
-    Player player;
 
-    public InInventoryState(Player player) {
-        this.player = player;
+    Game game;
+
+    public InventoryController(Game game) {
+        this.game = game;
+
     }
 
     @Override
     public void handle(KeyEvent event) {
+        Player player = game.getPlayer();
         switch (event.getCode()) {
             case I:  player.closeInventory(); break;
             case UP: player.getInventory().decreaseIndex(); break;
@@ -20,4 +25,6 @@ public class InInventoryState implements PlayerState{
             case Z: player.deleteItem(); break;
         }
     }
+
+
 }
