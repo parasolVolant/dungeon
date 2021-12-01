@@ -1,5 +1,6 @@
 package model.player;
 
+import controller.JavaFXController;
 import javafx.scene.input.KeyEvent;
 import model.game.Game;
 import model.room.*;
@@ -12,20 +13,20 @@ public class InAdventureState implements PlayerState{
 
     public InAdventureState(Game game) {
         this.game = game;
-        this.player = game.getPlayer();
+        //this.player = game.getPlayer();
     }
 
     @Override
     public void handle(KeyEvent event) {
         switch (event.getCode()) {
-            case UP:    player.goNorth(); break;
-            case DOWN:  player.goSouth(); break;
-            case LEFT:  player.goWest(); break;
-            case RIGHT: player.goEast(); break;
+            case UP:    game.getPlayer().goNorth(); break;
+            case DOWN:  game.getPlayer().goSouth(); break;
+            case LEFT:  game.getPlayer().goWest(); break;
+            case RIGHT: game.getPlayer().goEast(); break;
             case ENTER: new TreasureRoom().event(game);
                 System.out.println(player.getLife());
                 ;break;
-            case I:  player.openInventory(); break;
+            case I:  game.getPlayer().openInventory(); break;
     }
     }
 }

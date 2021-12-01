@@ -18,13 +18,13 @@ public class Game {
     private View view;
 
 
-    public Game(int width,int height,View view,CombatSystem combatSystem){
+    public Game(int width,int height,View view){
         this.width = width;
         this.height = height;
-        this.combatSystem = combatSystem;
         //gameController = new AdventureController(this);
         this.view = view;
         this.player = new Player(this);
+        this.combatSystem = new MonsterFirst(this);
 
 
     }
