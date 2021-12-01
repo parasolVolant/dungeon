@@ -17,10 +17,10 @@ public class Route {
     Room currentRoom;
     RoomGenerator generator;
 
-    public Route(Game game) {
-        this.player = game.getPlayer();
-        this.width= game.getWidth();
-        this.height= game.getHeight();
+    public Route(Player player) {
+        this.player = player;
+        this.width= player.getGame().getWidth();
+        this.height= player.getGame().getHeight();
         visitedRooms = new boolean[width][height];
         coverTree = new CoverTree(width, height);
         currentRoom = new EmptyRoom();
@@ -53,8 +53,8 @@ public class Route {
             currentRoom = EMPTY_ROOM;
             return;
         }
-        //currentRoom = generator.createRoom();
-        currentRoom = new MonsterRoom();
+        currentRoom = generator.createRoom();
+        //currentRoom = new MonsterRoom();
         visitedRooms[row][column] = true;
     }
 

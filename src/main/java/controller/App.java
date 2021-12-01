@@ -37,8 +37,7 @@ public class App extends Application {
         root.getChildren().add(new Canvas(400,200));
         Scene scene = new Scene(root);
         Game game = new Game(5,5,view);
-        Player player = new Player(game);
-        JavaFXController javaFXController = new JavaFXController(player);
+        JavaFXController javaFXController = new JavaFXController(game.getPlayer());
         scene.setOnKeyPressed(javaFXController.eventHandler);
         primaryStage.setScene(scene);
         primaryStage.show();

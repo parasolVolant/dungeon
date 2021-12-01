@@ -16,10 +16,10 @@ import view.View;
 public class Player {
     Game game;
     View view ;
+    Route route;
     Inventory inventory;
     PlayerState state;
     int posX, posY;
-    Route route;
     int life;
     int strength;
     int MAX_LIFE = 15;
@@ -27,13 +27,14 @@ public class Player {
 
 
 
+
     public Player(Game game) {
         this.game = game;
         this.view = game.getView();
         inventory = new Inventory(view);
+        route = new Route(this);
         posX = 0;
         posY = 0;
-        route = game.getRoute();
         state = new InAdventureState(this);
         this.life = MAX_LIFE;
         this.strength = 5;
@@ -85,6 +86,10 @@ public class Player {
 
     public View getView() {
         return view;
+    }
+
+    public Game getGame() {
+        return game;
     }
 
     public PlayerState getState() {

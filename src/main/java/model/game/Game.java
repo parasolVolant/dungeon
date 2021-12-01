@@ -13,7 +13,6 @@ public class Game {
     private int width;
     private int height;
     private Player player;
-    private Route route;
     private CombatSystem combatSystem;
     //private GameController gameController;
     private View view;
@@ -26,11 +25,9 @@ public class Game {
         //gameController = new AdventureController(this);
         this.view = view;
         this.player = new Player(this);
-        this.route = new Route(this);
+
 
     }
-
-
 
 
     public int getWidth(){
@@ -50,9 +47,6 @@ public class Game {
         return view;
     }
 
-    public Route getRoute(){
-        return route;
-    }
 
    /* public CombatSystem getCombatSystem(){
         return combatSystem;
