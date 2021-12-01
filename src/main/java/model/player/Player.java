@@ -57,9 +57,7 @@ public class Player {
     }
 
     public void hit(Monster monster){
-        System.out.println("tu tapes le monstre ma belle");
         monster.setLife(monster.getLife()-this.strength);
-        System.out.println(monster.getLife());
     }
 
 
