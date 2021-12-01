@@ -81,7 +81,7 @@ public class Player {
 
     public boolean isDead() {
         if(life <= 0) {
-            changeState(new DeadState(this));
+            changeState(new EndGameState(this));
             return true;
         }
         return false;
