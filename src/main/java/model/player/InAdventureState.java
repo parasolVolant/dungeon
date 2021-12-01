@@ -18,10 +18,9 @@ public class InAdventureState implements PlayerState{
             case DOWN:  player.goSouth(); break;
             case LEFT:  player.goWest(); break;
             case RIGHT: player.goEast(); break;
-            case ENTER: new TreasureRoom().event(player);
-                System.out.println(player.getLife());
-                ;break;
+            case U: player.openStatus(); break;
             case I:  player.openInventory(); break;
+            case ENTER : new TreasureRoom().event(player);
     }
     }
 }

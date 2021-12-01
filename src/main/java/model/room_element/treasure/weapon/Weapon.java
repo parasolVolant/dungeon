@@ -16,4 +16,9 @@ public abstract class Weapon implements Treasure {
         System.out.println(player.getStrength());
         player.setWeapon(this);
     }
+
+    public int getAddedStrength() {
+        return addedStrength;
+    }
+
 }

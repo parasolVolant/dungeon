@@ -13,6 +13,9 @@ import model.room_element.treasure.Treasure;
 import model.room_element.treasure.weapon.Fists;
 import model.room_element.treasure.weapon.Sword;
 import model.room_element.treasure.weapon.Weapon;
+import model.status.ClosedStatus;
+import model.status.OpenStatus;
+import model.status.Status;
 import view.View;
 
 public class Player {
@@ -27,6 +30,7 @@ public class Player {
     int MAX_LIFE = 15;
     Weapon weapon;
     CombatSystem combatSystem;
+    Status status;
 
 
     public Player(View view) {
@@ -40,6 +44,7 @@ public class Player {
         this.strength = BASE_STRENGTH;
         weapon = new Fists();
         this.combatSystem = new MonsterFirst(this);
+        status = new Status(this);
     }
 
     public int getLife() {
@@ -61,6 +66,14 @@ public class Player {
     public void setWeapon(Weapon weapon) {
         inventory.addItem(this.weapon);
         this.weapon = weapon;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public Status getStatus() {
+        return status;
     }
 
     public CombatSystem getCombatSystem() {
@@ -165,6 +178,19 @@ public class Player {
         inventory.changeState(new ClosedInventory());
         inventory.show();
         //view.handleMove(new Move(inventory.show()));
+    }
+
+    public void openStatus() {
+        this.changeState(new StatusController(this));
+        status.setStatus(this);
+        status.changeState(new OpenStatus());
+        status.show();
+    }
+
+    public void closeStatus() {
+        this.changeState(new InAdventureState(this));
+        status.changeState(new ClosedStatus());
+        status.show();
     }
 
     public void useItem() {
