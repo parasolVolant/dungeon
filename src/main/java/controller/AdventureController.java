@@ -24,7 +24,6 @@ public class AdventureController implements GameController{
             case LEFT:  player.goWest(); break;
             case RIGHT: player.goEast(); break;
             case U: player.openStatus(); break;
-            case ENTER: new TrapRoom().event(game); break;
             case I:  player.openInventory(); break;
         }
     }
