@@ -33,7 +33,6 @@ public class PlayerFirst implements CombatSystem{
             if(player.isDead()) {
 
                 sb.append("You lost the fight");
-                System.out.println(sb);
                 game.getView().handleMove(new Move(sb.toString()));
                 return;
             }
@@ -42,7 +41,6 @@ public class PlayerFirst implements CombatSystem{
             else if(monster.isDead()) {
 
                 sb.append("You won the fight!");
-                System.out.println(sb);
                 game.getView().handleMove(new Move(sb.toString()));
                 return;
             }
@@ -55,7 +53,6 @@ public class PlayerFirst implements CombatSystem{
             if(monster.isDead()){
 
                 sb.append("You won the fight");
-                System.out.println(sb);
                 game.getView().handleMove(new Move(sb.toString()));
                 return;
 
@@ -64,7 +61,6 @@ public class PlayerFirst implements CombatSystem{
             else if(player.isDead()) {
 
                 sb.append("You lost the fight");
-                System.out.println(sb);
                 game.getView().handleMove(new Move(sb.toString()));
                 return;
 

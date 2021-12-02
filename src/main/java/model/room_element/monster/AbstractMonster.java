@@ -29,15 +29,8 @@ public class AbstractMonster implements Monster{
     }
 
     @Override
-    public void setStrength(int strengthValue) {
-        strength = strengthValue;
-    }
-
-    @Override
     public void hit(Player player) {
-        System.out.println("tu tapes le monstre ma belle");
         player.setLife(player.getLife() - this.strength);
-        System.out.println(player.getLife());
     }
 
     @Override

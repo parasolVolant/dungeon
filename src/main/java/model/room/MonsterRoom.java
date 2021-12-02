@@ -12,10 +12,7 @@ public class MonsterRoom implements Room{
 
     @Override
     public void event(Game game) {
-        System.out.println("sltatouslesamis");
         game.getCombatSystem().fight(monster);
-        System.out.println("miss jirachi");
-        //player.getView().handleMove(new Move("test"));
-        //TODO
+
     }
 }

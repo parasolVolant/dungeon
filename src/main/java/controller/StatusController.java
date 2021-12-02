@@ -6,7 +6,6 @@ import model.player.Player;
 
 public class StatusController implements GameController{
 
-    Player player;
 
     Game game;
 

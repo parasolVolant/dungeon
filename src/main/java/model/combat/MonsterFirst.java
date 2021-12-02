@@ -22,14 +22,9 @@ public class MonsterFirst implements CombatSystem{
     @Override
     public void fight(Monster monster) {
         Player player = game.getPlayer();
-        System.out.println("c david lafarge pokemon");
-
         StringBuilder sb = new StringBuilder("A monster appeared! Fight!\n\n");
 
         while (true){
-
-            System.out.println("ojord'hui on va tester des cartes");
-
             monster.hit(player);
 
             sb.append(monster.getName() + " does " + monster.getStrength() + " damage. " +  " Your  remaining life is : "  + player.getLife()); sb.append("\n\n");
@@ -37,14 +32,12 @@ public class MonsterFirst implements CombatSystem{
             if(player.isDead()) {
 
                 sb.append("You lost the fight...");
-                System.out.println(sb);
                 game.getView().handleMove(new Move(sb.toString()));
                 return;
             }
             else if(monster.isDead()) {
 
                 sb.append("You won the fight!");
-                System.out.println(sb);
                 game.getView().handleMove(new Move(sb.toString()));
                 return;
             }
@@ -55,7 +48,6 @@ public class MonsterFirst implements CombatSystem{
             if(monster.isDead()) {
 
                 sb.append("You won the fight!");
-                System.out.println(sb);
                 game.getView().handleMove(new Move(sb.toString()));
                 return;
             }
@@ -63,7 +55,6 @@ public class MonsterFirst implements CombatSystem{
             else if(player.isDead()) {
 
                 sb.append("You lost the fight...");
-                System.out.println(sb);
                 game.getView().handleMove(new Move(sb.toString()));
                 return;
             }
@@ -71,7 +62,7 @@ public class MonsterFirst implements CombatSystem{
         }
 
 
-        //System.out.println("et je suis en compagnie de");
+
 
 
     }

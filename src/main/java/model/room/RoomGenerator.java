@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RoomGenerator {
 
-    static final int NUMBER_OF_ROOM = 3;  //augmenter avec le nombre de room
+    static final int NUMBER_OF_ROOM = 3;
 
     public Room createRoom() {
         Random random = new Random();

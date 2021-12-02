@@ -1,6 +1,6 @@
 package model.player;
 
-import model.game.Game;
+
 import model.labyrinth.graph_classes.CoverTree;
 import model.room.*;
 
@@ -54,7 +54,6 @@ public class Route {
             return;
         }
         currentRoom = generator.createRoom();
-        //currentRoom = new MonsterRoom();
         visitedRooms[row][column] = true;
     }
 

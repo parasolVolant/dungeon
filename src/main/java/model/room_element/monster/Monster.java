@@ -4,13 +4,12 @@ import model.player.Player;
 
 public interface Monster {
 
-    public String getName();
-    public int getLife();
-    public int getStrength();
-    public void setLife(int lifeValue);
-    public void setStrength(int strengthValue);
-    public void hit(Player player);
-    public boolean isDead();
+     String getName();
+     int getLife();
+     int getStrength();
+     void setLife(int lifeValue);
+     void hit(Player player);
+     boolean isDead();
 
 
 }

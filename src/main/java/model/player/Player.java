@@ -5,12 +5,8 @@ import controller.EndGameController;
 import controller.InventoryController;
 import controller.StatusController;
 import model.Move;
-import model.combat.CombatSystem;
-import model.combat.MonsterFirst;
-import model.combat.PlayerFirst;
 import model.game.Game;
 import model.room_element.monster.Monster;
-import model.room_element.treasure.Potion;
 import model.inventory.ClosedInventory;
 import model.inventory.Inventory;
 import model.inventory.OpenedInventory;
@@ -23,18 +19,16 @@ import model.status.Status;
 import view.View;
 
 public class Player {
-    private Game game;
-    private View view ;
-    private Route route;
-    private Inventory inventory;
-    //private PlayerState state;
+    Game game;
+    View view ;
+    Route route;
+    Inventory inventory;
     int posX, posY;
     int life;
     int strength;
     int BASE_STRENGTH = 3;
     int MAX_LIFE = 15;
     Weapon weapon;
-    //CombatSystem combatSystem;
     Status status;
 
 
@@ -46,12 +40,10 @@ public class Player {
         route = new Route(this);
         posX = 0;
         posY = 0;
-       // state = new InAdventureState(game);
         weapon = new Fists();
         this.life = MAX_LIFE;
         this.strength = BASE_STRENGTH;
         status = new Status(this);
-        //this.combatSystem = game.getCombatSystem();
     }
 
     public int getLife() {
@@ -81,16 +73,6 @@ public class Player {
         return weapon;
     }
 
-
-    public Status getStatus() {
-        return status;
-    }
-
-
-    /*public CombatSystem getCombatSystem() {
-        return combatSystem;
-    }*/
-
     public void setLife(int lifeValue) {
         this.life = lifeValue;
     }
@@ -100,9 +82,7 @@ public class Player {
     }
 
     public void hit(Monster monster){
-        System.out.println("tu tapes le monstre ma belle");
         monster.setLife(monster.getLife()-this.strength);
-        System.out.println(monster.getLife());
     }
 
 
@@ -113,9 +93,6 @@ public class Player {
         }
         return false;
     }
-
-
-
 
 
     public int getPosX() {
@@ -130,21 +107,9 @@ public class Player {
         return inventory;
     }
 
-    /*public View getView() {
-        return view;
-    }*/
-
     public Game getGame() {
         return game;
     }
-
-   /* public PlayerState getState() {
-        return state;
-    }
-
-    public void changeState(PlayerState newState) {
-        state = newState;
-    }*/
 
 
     public void goNorth() {

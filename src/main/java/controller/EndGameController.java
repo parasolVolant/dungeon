@@ -12,7 +12,7 @@ public class EndGameController implements GameController{
 
     public EndGameController(Game game) {
         this.game = game;
-        //this.player = game.getPlayer();
+
     }
 
 

@@ -15,7 +15,6 @@ public class Game {
     private int height;
     private Player player;
     private CombatSystem combatSystem;
-    //private PlayerState state;
     private GameController gameController;
     private View view;
 
@@ -27,7 +26,7 @@ public class Game {
         this.player = new Player(this);
         this.combatSystem = new MonsterFirst(this);
         gameController = new AdventureController(this);
-        //state = new InAdventureState(this);
+
 
 
     }
@@ -55,12 +54,6 @@ public class Game {
         return combatSystem;
     }
 
-
-
-
-
-
-
     public GameController getController() {
         return gameController;
     }
@@ -69,25 +62,6 @@ public class Game {
         gameController = newController;
     }
 
-/*
-    public PlayerState getState() {
-        return state;
-    }
-
-    public void changeState(PlayerState newState) {
-        state = newState;
-    }
-
-*/
-
-    /*public GameController getController() {
-        return gameController;
-    }
-
-
-    public void changeController(GameController controller) {
-        gameController = controller;
-    }*/
 
 
 

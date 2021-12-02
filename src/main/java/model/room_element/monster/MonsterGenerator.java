@@ -5,7 +5,7 @@ import java.util.Random;
 public class MonsterGenerator {
 
 
-    static final int NUMBER_OF_MONSTER = 2;  //augmenter avec le nombre de monstre
+    static final int NUMBER_OF_MONSTER = 2;
 
     public Monster createMonster() {
         Random random = new Random();

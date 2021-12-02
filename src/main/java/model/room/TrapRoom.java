@@ -9,12 +9,13 @@ import model.room_element.trap.TrapGenerator;
 public class TrapRoom implements Room{
 
 
-    //TODO
+
     Trap trap = new TrapGenerator().createTrap();
 
     @Override
     public void event(Game game) {
-        trap.hurt(game.getPlayer());
+        Player player = game.getPlayer();
+        trap.hurt(player);
         game.getView().handleMove(new Move(
                 trap.description()
         ));
