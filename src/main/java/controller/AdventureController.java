@@ -27,7 +27,7 @@ public class AdventureController implements GameController{
             case I:  player.openInventory(); break;
         }
     }
-    
+
 }
 
 

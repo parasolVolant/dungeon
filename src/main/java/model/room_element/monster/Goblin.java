@@ -4,7 +4,7 @@ public class Goblin extends AbstractMonster {
 
     public Goblin() {
         this.life = 10;
-        this.strength = 3;
+        this.strength = 2;
         this.name = "Goblin";
     }
 

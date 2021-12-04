@@ -27,7 +27,7 @@ public class Player {
     int life;
     int strength;
     int BASE_STRENGTH = 3;
-    int MAX_LIFE = 15;
+    int MAX_LIFE = 25;
     Weapon weapon;
     Status status;
 

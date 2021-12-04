@@ -11,9 +11,9 @@ public abstract class Weapon implements Treasure {
 
     @Override
     public void equip(Player player) {
-        System.out.println(player.getBaseStrength());
+
         player.setStrength(player.getBaseStrength() + addedStrength);
-        System.out.println(player.getStrength());
+
         player.setWeapon(this);
     }
 

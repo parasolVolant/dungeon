@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class TreasureGenerator {
 
-    static final int NUMBER_OF_TREASURE = 3;  //augmenter avec le nombre de trap
+    static final int NUMBER_OF_TREASURE = 3;
 
     public Treasure createTreasure() {
         Random random = new Random();
