@@ -111,6 +111,9 @@ public class Player {
         return game;
     }
 
+    public Route getRoute() {
+        return route;
+    }
 
     public void goNorth() {
         if(route.isPath(posX, posY-1)) {

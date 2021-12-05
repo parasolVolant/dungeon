@@ -1,5 +1,8 @@
 package model.labyrinth.graph_classes;
+import model.game.Game;
 import model.labyrinth.graph.*;
+import model.player.Player;
+import model.player.Route;
 
 import java.util.BitSet;
 
@@ -9,6 +12,8 @@ public class Grid {
 	int width;
 	int height;
 	int maxVertex;
+	Player player;
+	Route route;
 	
 	public Graph graph;
 	
@@ -24,9 +29,11 @@ public class Grid {
 		return ordinate * width + abscissa;
 	}
 	
-	public Grid(int width, int height) {
+	public Grid(Player player, int width, int height) {
 		this.width = width;
 		this.height = height;
+		this.player = player;
+		this.route = player.getRoute();
 		maxVertex = width * height - 1;
 		graph = new Graph(maxVertex);
 		for (int i = 0; i < width; i++) {
@@ -56,11 +63,22 @@ public class Grid {
 	public boolean isVertical(Edge e) {
 		return Math.abs(e.source - e.dest) == width;
 	}
-	
+
+	private int playerVertex() {
+		return vertexOfCoordinate(player.getPosX(), player.getPosY());
+	}
+
+	private boolean isDiscovered(int row, int col) {
+		return route.isVisited(row, col);
+	}
 	
 	private void drawLine(int h, BitSet right) {
 		for (int i = 0; i < width - 1; i++) {
-			System.out.print("o");
+			if (vertexOfCoordinate(i, h) == playerVertex()) {
+				System.out.print("P");
+			} else if (isDiscovered(i, h)) {
+				System.out.print("o");
+			}
 			if (right.get(vertexOfCoordinate(i,h))) System.out.print("--");
 			else System.out.print("  ");
 		}

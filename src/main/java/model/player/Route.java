@@ -22,7 +22,8 @@ public class Route {
         this.width= player.getGame().getWidth();
         this.height= player.getGame().getHeight();
         visitedRooms = new boolean[width][height];
-        coverTree = new CoverTree(width, height);
+        coverTree = new CoverTree(player, width, height);
+        coverTree.drawGrid();
         currentRoom = new EmptyRoom();
         visitedRooms[0][0] = true;
         generator = new RoomGenerator();
@@ -32,7 +33,7 @@ public class Route {
         return coverTree.isPath(player.getPosX(), player.getPosY(), row, col);
     }
 
-    private boolean isVisited(int row, int col) {
+    public boolean isVisited(int row, int col) {
         return visitedRooms[row][col];
     }
 
@@ -59,6 +60,7 @@ public class Route {
 
     public void update(int row, int col) {
         setCurrentRoom(row, col);
+        coverTree.drawGrid();
         event();
     }
 }

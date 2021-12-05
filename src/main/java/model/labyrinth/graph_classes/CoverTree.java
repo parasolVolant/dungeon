@@ -1,7 +1,9 @@
 package model.labyrinth.graph_classes;
 
+import model.game.Game;
 import model.labyrinth.graph.*;
 import model.labyrinth.algo.AldousBroderAlgorithm;
+import model.player.Player;
 
 
 import java.util.ArrayList;
@@ -16,12 +18,15 @@ public class CoverTree {
     Grid grid;
     ArrayList<Edge> graph = new ArrayList<Edge>();
 
-    public CoverTree(int width, int height) {
-        grid = new Grid(width, height);
+    public CoverTree(Player player, int width, int height) {
+        grid = new Grid(player, width, height);
         try {
             graph = graph();
         } catch (InterruptedException e) {
         }
+    }
+
+    public void drawGrid() {
         grid.drawSubgrid(graph);
     }
 
