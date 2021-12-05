@@ -76,7 +76,7 @@ public class Grid {
 		for (int i = 0; i < width - 1; i++) {
 			if (vertexOfCoordinate(i, h) == playerVertex()) {
 				System.out.print("P");
-			} else if (isDiscovered(i, h)) {
+			} else  {
 				System.out.print("o");
 			}
 			if (right.get(vertexOfCoordinate(i,h))) System.out.print("--");
@@ -109,7 +109,8 @@ public class Grid {
 			drawLine(j,right);
 			if (j < height - 1) drawInterline(j,up);
 		}
-		
+		System.out.println();
+		System.out.println();
 	}
 
 	

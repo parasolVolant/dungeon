@@ -5,6 +5,7 @@ import controller.GameController;
 import model.combat.CombatSystem;
 import model.combat.MonsterFirst;
 import model.player.Player;
+import model.player.Route;
 import view.View;
 
 public class Game {
@@ -26,9 +27,6 @@ public class Game {
         this.player = new Player(this);
         this.combatSystem = new MonsterFirst(this);
         gameController = new AdventureController(this);
-
-
-
     }
 
 
@@ -39,7 +37,6 @@ public class Game {
     public int getHeight(){
         return height;
     }
-
 
     public Player getPlayer(){
         return player;
